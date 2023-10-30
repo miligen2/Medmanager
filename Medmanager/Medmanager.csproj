@@ -58,6 +58,12 @@
     <Compile Include="APatient.Designer.cs">
       <DependentUpon>APatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="AMedicament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AMedicament.Designer.cs">
+      <DependentUpon>AMedicament.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AConsultation.resx">
       <DependentUpon>AConsultation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AMedicament.resx">
+      <DependentUpon>AMedicament.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="APatient.resx">
       <DependentUpon>APatient.cs</DependentUpon>
