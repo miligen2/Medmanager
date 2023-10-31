@@ -33,6 +33,7 @@ namespace Medmanager
         {
             string name = this.textBox1.Text;
             string description = this.textBox2.Text;
+
             this.Close();
         }
     }

@@ -29,6 +29,11 @@ namespace Medmanager
 
             textBox1.Text = string.Empty;
             textBox2.Text = string.Empty;
+
+            if (textBox1.Text.Length > 0 || textBox2.Text.Length > 0)
+            {
+                MessageBox.Show("Veuillez remplir les champs");
+            }
             
 
             
