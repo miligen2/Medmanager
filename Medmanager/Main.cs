@@ -17,7 +17,7 @@ namespace Medmanager
         {
             InitializeComponent();
 
-            MySqlConnection conn = new MySqlConnection("database=medmanager; server=localhost; user id=root; pwd=");
+            MySqlConnection conn = new MySqlConnection("database=medmanager; server=localhost; user id=root; pwd=root");
             try 
             { 
                 conn.Open();
@@ -67,13 +67,20 @@ namespace Medmanager
 
         private void ajouterConsultationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-         
+         AConsultation aConsultation = new AConsultation();
+            aConsultation.Show();
         }
 
         private void ajoutMédicamentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AMedicament aMedicament = new AMedicament();
             aMedicament.Show();
+        }
+
+        private void ajouterPatientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            APatient aPatient = new APatient();
+            aPatient.Show();
         }
     }
 }

@@ -62,14 +62,20 @@
     <Compile Include="APatient.Designer.cs">
       <DependentUpon>APatient.cs</DependentUpon>
     </Compile>
-    <Compile Include="AMedicament.cs">
+    <Compile Include="Ajouter medicament\AMedicament.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AMedicament.Designer.cs">
+    <Compile Include="Ajouter medicament\AMedicament.Designer.cs">
       <DependentUpon>AMedicament.cs</DependentUpon>
     </Compile>
     <Compile Include="DrugDataAcces.cs" />
     <Compile Include="Drug.cs" />
+    <Compile Include="Ajouter medicament\FormDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajouter medicament\FormDetails.Designer.cs">
+      <DependentUpon>FormDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,11 +87,14 @@
     <EmbeddedResource Include="AConsultation.resx">
       <DependentUpon>AConsultation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AMedicament.resx">
+    <EmbeddedResource Include="Ajouter medicament\AMedicament.resx">
       <DependentUpon>AMedicament.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="APatient.resx">
       <DependentUpon>APatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ajouter medicament\FormDetails.resx">
+      <DependentUpon>FormDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
