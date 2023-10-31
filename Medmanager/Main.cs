@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Medmanager
 {
@@ -15,6 +16,13 @@ namespace Medmanager
         public Main()
         {
             InitializeComponent();
+
+            MySqlConnection conn = new MySqlConnection("database=medmanager; server=localhost; user id=root; pwd=");
+            try 
+            { 
+                conn.Open();
+            }
+            catch {  }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -50,6 +58,22 @@ namespace Medmanager
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void consultationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ajouterConsultationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void ajoutMédicamentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AMedicament aMedicament = new AMedicament();
+            aMedicament.Show();
         }
     }
 }

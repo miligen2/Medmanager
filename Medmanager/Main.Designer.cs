@@ -38,12 +38,12 @@
             this.patientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consulterPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifierPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listeConsultationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterConsultationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
             this.modifierConsultationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modifierPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -58,8 +58,8 @@
             this.consultationToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(795, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1060, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "navbar";
             // 
@@ -71,32 +71,33 @@
             this.ajoutMédicamentsToolStripMenuItem,
             this.supprimerMédicamentToolStripMenuItem});
             this.medicamentsToolStripMenuItem.Name = "medicamentsToolStripMenuItem";
-            this.medicamentsToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.medicamentsToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
             this.medicamentsToolStripMenuItem.Text = "Medicaments";
             // 
             // consultationMédicamentToolStripMenuItem
             // 
             this.consultationMédicamentToolStripMenuItem.Name = "consultationMédicamentToolStripMenuItem";
-            this.consultationMédicamentToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.consultationMédicamentToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
             this.consultationMédicamentToolStripMenuItem.Text = "Consultation Médicament";
             this.consultationMédicamentToolStripMenuItem.Click += new System.EventHandler(this.consultationMédicamentToolStripMenuItem_Click);
             // 
             // medicamentParFamilleToolStripMenuItem
             // 
             this.medicamentParFamilleToolStripMenuItem.Name = "medicamentParFamilleToolStripMenuItem";
-            this.medicamentParFamilleToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.medicamentParFamilleToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
             this.medicamentParFamilleToolStripMenuItem.Text = "Medicament par Famille";
             // 
             // ajoutMédicamentsToolStripMenuItem
             // 
             this.ajoutMédicamentsToolStripMenuItem.Name = "ajoutMédicamentsToolStripMenuItem";
-            this.ajoutMédicamentsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.ajoutMédicamentsToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
             this.ajoutMédicamentsToolStripMenuItem.Text = "Ajout Médicaments";
+            this.ajoutMédicamentsToolStripMenuItem.Click += new System.EventHandler(this.ajoutMédicamentsToolStripMenuItem_Click);
             // 
             // supprimerMédicamentToolStripMenuItem
             // 
             this.supprimerMédicamentToolStripMenuItem.Name = "supprimerMédicamentToolStripMenuItem";
-            this.supprimerMédicamentToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.supprimerMédicamentToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
             this.supprimerMédicamentToolStripMenuItem.Text = "Supprimer Médicament";
             // 
             // patientToolStripMenuItem
@@ -106,20 +107,26 @@
             this.ajouterPatientToolStripMenuItem,
             this.modifierPatientToolStripMenuItem});
             this.patientToolStripMenuItem.Name = "patientToolStripMenuItem";
-            this.patientToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.patientToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
             this.patientToolStripMenuItem.Text = "Patient";
             // 
             // consulterPatientToolStripMenuItem
             // 
             this.consulterPatientToolStripMenuItem.Name = "consulterPatientToolStripMenuItem";
-            this.consulterPatientToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.consulterPatientToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.consulterPatientToolStripMenuItem.Text = "Consulter Patient";
             // 
             // ajouterPatientToolStripMenuItem
             // 
             this.ajouterPatientToolStripMenuItem.Name = "ajouterPatientToolStripMenuItem";
-            this.ajouterPatientToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.ajouterPatientToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.ajouterPatientToolStripMenuItem.Text = "Ajouter Patient";
+            // 
+            // modifierPatientToolStripMenuItem
+            // 
+            this.modifierPatientToolStripMenuItem.Name = "modifierPatientToolStripMenuItem";
+            this.modifierPatientToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.modifierPatientToolStripMenuItem.Text = "modifier patient";
             // 
             // consultationToolStripMenuItem
             // 
@@ -128,69 +135,65 @@
             this.ajouterConsultationToolStripMenuItem,
             this.modifierConsultationToolStripMenuItem});
             this.consultationToolStripMenuItem.Name = "consultationToolStripMenuItem";
-            this.consultationToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
+            this.consultationToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
             this.consultationToolStripMenuItem.Text = "Consultation";
+            this.consultationToolStripMenuItem.Click += new System.EventHandler(this.consultationToolStripMenuItem_Click);
             // 
             // listeConsultationToolStripMenuItem
             // 
             this.listeConsultationToolStripMenuItem.Name = "listeConsultationToolStripMenuItem";
-            this.listeConsultationToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.listeConsultationToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
             this.listeConsultationToolStripMenuItem.Text = "Liste Consultation";
             // 
             // ajouterConsultationToolStripMenuItem
             // 
             this.ajouterConsultationToolStripMenuItem.Name = "ajouterConsultationToolStripMenuItem";
-            this.ajouterConsultationToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.ajouterConsultationToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
             this.ajouterConsultationToolStripMenuItem.Text = "Ajouter Consultation";
+            this.ajouterConsultationToolStripMenuItem.Click += new System.EventHandler(this.ajouterConsultationToolStripMenuItem_Click);
+            // 
+            // modifierConsultationToolStripMenuItem
+            // 
+            this.modifierConsultationToolStripMenuItem.Name = "modifierConsultationToolStripMenuItem";
+            this.modifierConsultationToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
+            this.modifierConsultationToolStripMenuItem.Text = "Modifier Consultation";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(99, 104);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(132, 128);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(639, 113);
+            this.label1.Size = new System.Drawing.Size(800, 142);
             this.label1.TabIndex = 1;
             this.label1.Text = "MedManager";
             this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // modifierConsultationToolStripMenuItem
-            // 
-            this.modifierConsultationToolStripMenuItem.Name = "modifierConsultationToolStripMenuItem";
-            this.modifierConsultationToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.modifierConsultationToolStripMenuItem.Text = "Modifier Consultation";
-            // 
-            // modifierPatientToolStripMenuItem
-            // 
-            this.modifierPatientToolStripMenuItem.Name = "modifierPatientToolStripMenuItem";
-            this.modifierPatientToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.modifierPatientToolStripMenuItem.Text = "modifier patient";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(194, 298);
+            this.label2.Location = new System.Drawing.Point(259, 367);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(189, 20);
+            this.label2.Size = new System.Drawing.Size(233, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Nombre de consultation : ";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(795, 558);
+            this.ClientSize = new System.Drawing.Size(1060, 687);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Main";
             this.Text = " MedManager";
             this.Load += new System.EventHandler(this.Main_Load);
