@@ -34,10 +34,10 @@
             this.LCommentaire = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.buttonValider = new System.Windows.Forms.Button();
             this.buttonAnnuler = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // LMatricule
@@ -46,15 +46,15 @@
             this.LMatricule.Location = new System.Drawing.Point(74, 62);
             this.LMatricule.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LMatricule.Name = "LMatricule";
-            this.LMatricule.Size = new System.Drawing.Size(50, 13);
+            this.LMatricule.Size = new System.Drawing.Size(41, 13);
             this.LMatricule.TabIndex = 0;
-            this.LMatricule.Text = "Matricule";
+            this.LMatricule.Text = "Avec : ";
             this.LMatricule.Click += new System.EventHandler(this.label1_Click);
             // 
             // LDateConsult
             // 
             this.LDateConsult.AutoSize = true;
-            this.LDateConsult.Location = new System.Drawing.Point(74, 131);
+            this.LDateConsult.Location = new System.Drawing.Point(74, 214);
             this.LDateConsult.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LDateConsult.Name = "LDateConsult";
             this.LDateConsult.Size = new System.Drawing.Size(122, 13);
@@ -65,7 +65,7 @@
             // LtypeConsult
             // 
             this.LtypeConsult.AutoSize = true;
-            this.LtypeConsult.Location = new System.Drawing.Point(74, 96);
+            this.LtypeConsult.Location = new System.Drawing.Point(74, 183);
             this.LtypeConsult.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LtypeConsult.Name = "LtypeConsult";
             this.LtypeConsult.Size = new System.Drawing.Size(109, 13);
@@ -76,7 +76,7 @@
             // LCommentaire
             // 
             this.LCommentaire.AutoSize = true;
-            this.LCommentaire.Location = new System.Drawing.Point(74, 165);
+            this.LCommentaire.Location = new System.Drawing.Point(74, 254);
             this.LCommentaire.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LCommentaire.Name = "LCommentaire";
             this.LCommentaire.Size = new System.Drawing.Size(68, 13);
@@ -86,8 +86,8 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(316, 165);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Location = new System.Drawing.Point(316, 254);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(224, 116);
@@ -96,24 +96,16 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(316, 126);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker2.Location = new System.Drawing.Point(316, 213);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(224, 20);
             this.dateTimePicker2.TabIndex = 6;
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(316, 57);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(224, 20);
-            this.textBox2.TabIndex = 7;
-            // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(316, 91);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Location = new System.Drawing.Point(316, 178);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(224, 20);
             this.textBox3.TabIndex = 8;
@@ -121,8 +113,8 @@
             // buttonValider
             // 
             this.buttonValider.BackColor = System.Drawing.Color.SeaGreen;
-            this.buttonValider.Location = new System.Drawing.Point(76, 292);
-            this.buttonValider.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonValider.Location = new System.Drawing.Point(76, 394);
+            this.buttonValider.Margin = new System.Windows.Forms.Padding(2);
             this.buttonValider.Name = "buttonValider";
             this.buttonValider.Size = new System.Drawing.Size(76, 37);
             this.buttonValider.TabIndex = 9;
@@ -132,8 +124,8 @@
             // buttonAnnuler
             // 
             this.buttonAnnuler.BackColor = System.Drawing.Color.DarkRed;
-            this.buttonAnnuler.Location = new System.Drawing.Point(190, 292);
-            this.buttonAnnuler.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAnnuler.Location = new System.Drawing.Point(190, 394);
+            this.buttonAnnuler.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAnnuler.Name = "buttonAnnuler";
             this.buttonAnnuler.Size = new System.Drawing.Size(76, 37);
             this.buttonAnnuler.TabIndex = 10;
@@ -141,23 +133,32 @@
             this.buttonAnnuler.UseVisualStyleBackColor = false;
             this.buttonAnnuler.Click += new System.EventHandler(this.button2_Click);
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(316, 62);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(224, 95);
+            this.listBox1.TabIndex = 11;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
             // AConsultation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(604, 507);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.buttonAnnuler);
             this.Controls.Add(this.buttonValider);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.LCommentaire);
             this.Controls.Add(this.LtypeConsult);
             this.Controls.Add(this.LDateConsult);
             this.Controls.Add(this.LMatricule);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AConsultation";
             this.Text = "MedManager - Ajouter une consultation";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -174,9 +175,9 @@
         private System.Windows.Forms.Label LCommentaire;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button buttonValider;
         private System.Windows.Forms.Button buttonAnnuler;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+
+
+
+
 namespace Medmanager
 {
     public partial class Main : Form
@@ -17,12 +21,11 @@ namespace Medmanager
         {
             InitializeComponent();
 
-            MySqlConnection conn = new MySqlConnection("database=medmanager; server=localhost; user id=root; pwd=root");
-            try 
-            { 
-                conn.Open();
-            }
-            catch {  }
+      
+            Connection_DB connection = new Connection_DB();
+
+            connection.Open();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,7 +35,7 @@ namespace Medmanager
 
         private void consultationMédicamentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("test"); 
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -81,6 +84,11 @@ namespace Medmanager
         {
             APatient aPatient = new APatient();
             aPatient.Show();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
