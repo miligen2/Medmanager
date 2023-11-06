@@ -98,9 +98,9 @@
             this.label5.Location = new System.Drawing.Point(59, 161);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 17);
+            this.label5.Size = new System.Drawing.Size(164, 17);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Code Postal";
+            this.label5.Text = "Code Postal + Adresse : ";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6

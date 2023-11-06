@@ -98,16 +98,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AConsultation.cs">
+    <Compile Include="Ajouter Consultation\AConsultation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AConsultation.Designer.cs">
+    <Compile Include="Ajouter Consultation\AConsultation.Designer.cs">
       <DependentUpon>AConsultation.cs</DependentUpon>
     </Compile>
-    <Compile Include="APatient.cs">
+    <Compile Include="Ajouter patient\APatient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="APatient.Designer.cs">
+    <Compile Include="Ajouter patient\APatient.Designer.cs">
       <DependentUpon>APatient.cs</DependentUpon>
     </Compile>
     <Compile Include="Ajouter medicament\AMedicament.cs">
@@ -133,13 +133,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AConsultation.resx">
+    <EmbeddedResource Include="Ajouter Consultation\AConsultation.resx">
       <DependentUpon>AConsultation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ajouter medicament\AMedicament.resx">
       <DependentUpon>AMedicament.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="APatient.resx">
+    <EmbeddedResource Include="Ajouter patient\APatient.resx">
       <DependentUpon>APatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ajouter medicament\FormDetails.resx">
@@ -174,5 +174,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

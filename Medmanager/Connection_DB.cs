@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.BC;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,6 +11,8 @@ using System.Windows.Forms;
 namespace Medmanager
 {
     internal class Connection_DB
+    //La classe Connection_DB est actuellement définie comme internal,
+    //ce qui signifie qu'elle est accessible uniquement à l'intérieur de l'assembly où elle est déclarée.
     {
         MySqlConnection conn;
         string connectionString;
@@ -45,33 +48,6 @@ namespace Medmanager
             conn.Close();
             Console.WriteLine("Connexion à la base de données MySQL fermée.");
         }
-        public void ReadData(string tableName)
-        {
-            try
-            {
-                string query = $"SELECT * FROM {tableName}";
-
-                MySqlCommand command = new MySqlCommand(query, conn);
-                MySqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    for (int i = 0; i < reader.FieldCount; i++)
-                    {
-                        Console.Write(reader[i] + "   ");
-                    }
-                    Console.WriteLine();
-                }
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Erreur lors de la lecture des données : " + ex.Message);
-            }
-
-
-        }
         public void InsertDataPatient(string nom, string prenom, string email, string numero, string code_postal, DateTime date_entree)
         {
             try
@@ -93,6 +69,87 @@ namespace Medmanager
             catch (Exception ex)
             {
                 Console.WriteLine("Erreur lors de l'insertion des données : " + ex.Message);
+            }
+        }
+
+        public void InsertDataMedicament(string nom, string description, int quantite, decimal prix)
+        {
+            try
+            {
+                string query = "INSERT INTO medicaments (nom, description, quantite, prix) VALUES (@nom, @description, @quantite, @prix)";
+
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@nom", nom);
+                command.Parameters.AddWithValue("@description", description);
+                command.Parameters.AddWithValue("@quantite", quantite);
+                command.Parameters.AddWithValue("@prix", prix);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                Console.WriteLine($"Nombre de lignes insérées : {rowsAffected}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors de l'insertion des données : " + ex.Message);
+            }
+        }
+
+        public void InsertDataConsultation(int selectedId, string typeConsultation, DateTime dateConsultation, string commentaire, ListBox listBox)
+        {
+            try
+            {
+                string clientInfo = listBox.SelectedItem.ToString();
+                string[] clientInfos = clientInfo.Split('-');
+                string nomPrenom = clientInfos[0].Trim();
+                string[] nomPrenomParts = nomPrenom.Split(' ');
+                string nom = nomPrenomParts[0];
+                string prenom = nomPrenomParts[1];
+
+                string query = "INSERT INTO consultations (typeConsultation, commentaire, dateConsultation, clientId) VALUES (@typeConsultation, @commentaire, @dateConsultation, @clientId)";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@typeConsultation", typeConsultation);
+                command.Parameters.AddWithValue("@commentaire", commentaire);
+                command.Parameters.AddWithValue("@dateConsultation", dateConsultation);
+                command.Parameters.AddWithValue("@clientId", selectedId);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                Console.WriteLine($"Nombre de lignes insérées : {rowsAffected}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors de l'insertion des données de consultation : " + ex.Message);
+            }
+        }
+
+
+
+
+        public void LoadPatients(ListBox listBox)
+        {
+            try
+            {
+                string query = "SELECT id, nom, prenom , numero, CP FROM clients";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32("id");
+                    string nom = reader.GetString("nom");
+                    string prenom = reader.GetString("prenom");
+                    string numero = reader.GetString("numero");
+                    string codePostal = reader.GetString("CP");
+                    string informations = $"{nom} {prenom} - {numero} - {codePostal}";
+
+                    listBox.Items.Add(informations);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors du chargement des patients : " + ex.Message);
             }
         }
     }

@@ -101,6 +101,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(224, 20);
             this.dateTimePicker2.TabIndex = 6;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // textBox3
             // 
@@ -109,6 +110,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(224, 20);
             this.textBox3.TabIndex = 8;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // buttonValider
             // 
@@ -120,6 +122,7 @@
             this.buttonValider.TabIndex = 9;
             this.buttonValider.Text = "Valider";
             this.buttonValider.UseVisualStyleBackColor = false;
+            this.buttonValider.Click += new System.EventHandler(this.buttonValider_Click);
             // 
             // buttonAnnuler
             // 
