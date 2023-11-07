@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Medmanager.Ajouter_Consultation;
+using Medmanager.Ajouter_medicament;
 using MySql.Data.MySqlClient;
 
 
@@ -35,7 +37,8 @@ namespace Medmanager
 
         private void consultationMédicamentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            LMedicament lMedicament = new LMedicament();
+            lMedicament.Show();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -87,6 +90,11 @@ namespace Medmanager
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }

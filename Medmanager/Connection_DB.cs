@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Medmanager
 {
     internal class Connection_DB
     //La classe Connection_DB est actuellement définie comme internal,
-    //ce qui signifie qu'elle est accessible uniquement à l'intérieur de l'assembly où elle est déclarée.
+    //ce qui signifie qu'elle est accessible uniquement à l'intérieur de l'assembly où elle est déclarée.*
     {
+
         MySqlConnection conn;
         string connectionString;
 
@@ -94,6 +96,39 @@ namespace Medmanager
             }
         }
 
+        public List<Drug> ReadMedicament()
+        {
+            List<Drug> medicamentList = new List<Drug>();
+
+            try
+            {
+                string query = "SELECT * FROM medicaments";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string nom = reader.GetString("nom");
+                    string description = reader.GetString("description");
+                    int quantite = reader.GetInt32("quantite");
+                    decimal prix = reader.GetDecimal("prix");
+
+                    Drug medicament = new Drug(nom, description, quantite, prix);
+                    medicamentList.Add(medicament);
+
+                }
+
+                reader.Close();
+
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Erreur lecture médicament : " + ex.Message);
+            }
+            return medicamentList;
+        }
+
         public void InsertDataConsultation(int selectedId, string typeConsultation, DateTime dateConsultation, string commentaire, ListBox listBox)
         {
             try
@@ -129,7 +164,7 @@ namespace Medmanager
         {
             try
             {
-                string query = "SELECT id, nom, prenom , numero, CP FROM clients";
+                string query = "SELECT id, nom, prenom , numero, CP FROM clients"; 
                 MySqlCommand command = new MySqlCommand(query, conn);
                 MySqlDataReader reader = command.ExecuteReader();
 

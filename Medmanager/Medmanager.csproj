@@ -104,6 +104,18 @@
     <Compile Include="Ajouter Consultation\AConsultation.Designer.cs">
       <DependentUpon>AConsultation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ajouter Consultation\LConsultation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajouter Consultation\LConsultation.Designer.cs">
+      <DependentUpon>LConsultation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ajouter medicament\LMedicament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajouter medicament\LMedicament.Designer.cs">
+      <DependentUpon>LMedicament.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ajouter patient\APatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,7 +130,7 @@
     </Compile>
     <Compile Include="Connection_DB.cs" />
     <Compile Include="DrugDataAcces.cs" />
-    <Compile Include="Drug.cs" />
+    <Compile Include="model\Drug.cs" />
     <Compile Include="Ajouter medicament\FormDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,8 +148,14 @@
     <EmbeddedResource Include="Ajouter Consultation\AConsultation.resx">
       <DependentUpon>AConsultation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ajouter Consultation\LConsultation.resx">
+      <DependentUpon>LConsultation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ajouter medicament\AMedicament.resx">
       <DependentUpon>AMedicament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ajouter medicament\LMedicament.resx">
+      <DependentUpon>LMedicament.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ajouter patient\APatient.resx">
       <DependentUpon>APatient.cs</DependentUpon>
