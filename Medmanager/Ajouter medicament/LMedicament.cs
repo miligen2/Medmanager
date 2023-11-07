@@ -21,7 +21,8 @@ namespace Medmanager.Ajouter_medicament
         }
         private void loadMedicament()
         {
-            conn.ReadMedicament();
+            conn.ReadMedicament(dataGridView1);
+
         }
 
 
@@ -32,18 +33,8 @@ namespace Medmanager.Ajouter_medicament
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            Connection_DB conn = new Connection_DB();
 
-            List<Drug> medicamentList = conn.ReadMedicament();
-
-            // Vider les données existantes dans le DataGridView
-            dataGridView1.Rows.Clear();
-
-            // Ajouter les nouvelles données au DataGridView
-            foreach (Drug medicament in medicamentList)
-            {
-                dataGridView1.Rows.Add(medicament.name, medicament.description, medicament.quantite, medicament.prix);
-            }
         }
+
     }
 }

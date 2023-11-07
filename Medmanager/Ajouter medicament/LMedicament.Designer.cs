@@ -30,10 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prix = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,36 +45,10 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nom,
-            this.description,
-            this.quantite,
-            this.prix});
-            this.dataGridView1.Location = new System.Drawing.Point(120, 95);
+            this.dataGridView1.Location = new System.Drawing.Point(120, 101);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(599, 327);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
-            // 
-            // nom
-            // 
-            this.nom.HeaderText = "nom";
-            this.nom.Name = "nom";
-            // 
-            // description
-            // 
-            this.description.HeaderText = "description";
-            this.description.Name = "description";
-            // 
-            // quantite
-            // 
-            this.quantite.HeaderText = "quantite";
-            this.quantite.Name = "quantite";
-            // 
-            // prix
-            // 
-            this.prix.HeaderText = "prix";
-            this.prix.Name = "prix";
+            this.dataGridView1.Size = new System.Drawing.Size(580, 319);
+            this.dataGridView1.TabIndex = 3;
             // 
             // LMedicament
             // 
@@ -99,9 +69,5 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantite;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prix;
     }
 }

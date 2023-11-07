@@ -96,7 +96,7 @@ namespace Medmanager
             }
         }
 
-        public List<Drug> ReadMedicament()
+        public List<Drug> ReadMedicament(DataGridView dataGridView)
         {
             List<Drug> medicamentList = new List<Drug>();
 
@@ -105,8 +105,12 @@ namespace Medmanager
                 string query = "SELECT * FROM medicaments";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 MySqlDataReader reader = command.ExecuteReader();
+                DataTable table = new DataTable();
+                table.Load(reader);
+                dataGridView.DataSource = table;
 
-                while (reader.Read())
+
+/*                while (reader.Read())
                 {
                     string nom = reader.GetString("nom");
                     string description = reader.GetString("description");
@@ -117,9 +121,18 @@ namespace Medmanager
                     medicamentList.Add(medicament);
 
                 }
+                
 
                 reader.Close();
 
+                // Effacer les données existantes dans le DataGridView
+                dataGridView.Rows.Clear();
+
+                // Ajouter les nouvelles données au DataGridView
+                foreach (Drug medicament in medicamentList)
+                {
+                    dataGridView.Rows.Add(medicament.name, medicament.description, medicament.quantite, medicament.prix);
+                }*/
 
             }
             catch(Exception ex)
