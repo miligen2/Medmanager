@@ -37,6 +37,7 @@
             this.numericUpDownQuantité = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.suppr = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantité)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +49,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(199, 20);
             this.textBox1.TabIndex = 0;
-
             // 
             // textBox2
             // 
@@ -129,11 +129,22 @@
             this.label4.Text = "Prix :";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
+            // suppr
+            // 
+            this.suppr.Location = new System.Drawing.Point(293, 279);
+            this.suppr.Name = "suppr";
+            this.suppr.Size = new System.Drawing.Size(75, 37);
+            this.suppr.TabIndex = 17;
+            this.suppr.Text = "Supprimer";
+            this.suppr.UseVisualStyleBackColor = true;
+            this.suppr.Click += new System.EventHandler(this.suppr_Click);
+            // 
             // FormDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 602);
+            this.Controls.Add(this.suppr);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numericUpDownQuantité);
@@ -164,5 +175,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDownQuantité;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button suppr;
     }
 }

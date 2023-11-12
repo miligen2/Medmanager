@@ -278,12 +278,37 @@ namespace Medmanager
             }
         }
 
+        public void DeletMedicament(int medicamentID)
+        {
+            try
+            {
+                // Écrivez ici le code pour supprimer le patient de la base de données en utilisant l'ID
+                // Assurez-vous de prendre des précautions pour éviter les problèmes de suppression (comme la vérification des dépendances).
+
+                string query = "DELETE FROM medicaments WHERE id = @medicamentID";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@medicamentID", medicamentID);
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Médicament supprimé avec succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de la suppression du médicament : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
 
 
 
 
 
-       
+
+
+
     }
 
 }

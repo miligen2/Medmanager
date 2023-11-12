@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medmanager.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -89,6 +90,11 @@ namespace Medmanager
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void suppr_Click(object sender, EventArgs e)
+        {
+            conn.DeletMedicament(medicamentID);
         }
     }
 }
