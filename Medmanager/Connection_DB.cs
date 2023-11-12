@@ -1,8 +1,11 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Medmanager.model;
+using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
 using Org.BouncyCastle.Asn1.BC;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,6 +53,46 @@ namespace Medmanager
             conn.Close();
             Console.WriteLine("Connexion à la base de données MySQL fermée.");
         }
+
+
+
+
+        // main =
+        public int GetNumberOfConsultations()
+        {
+            try
+            {
+                string query = "SELECT COUNT(*) FROM consultations";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                int numberOfConsultations = Convert.ToInt32(command.ExecuteScalar());
+                return numberOfConsultations;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors de la récupération du nombre de consultations : " + ex.Message);
+                return 0; // Return 0 in case of an error
+            }
+        }
+
+        public int GetNumberOfPatients()
+        {
+            try
+            {
+                string query = "SELECT COUNT(*) FROM clients";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                int numberOfPatients = Convert.ToInt32(command.ExecuteScalar());
+                return numberOfPatients;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors de la récupération du nombre de patients : " + ex.Message);
+                return 0; // Return 0 in case of an error
+            }
+        }
+
+        //fin main 
+
+        //patient 
         public void InsertDataPatient(string nom, string prenom, string email, string numero, string code_postal, DateTime date_entree)
         {
             try
@@ -73,6 +116,73 @@ namespace Medmanager
                 Console.WriteLine("Erreur lors de l'insertion des données : " + ex.Message);
             }
         }
+        public void ReadPatients(DataGridView dataGridView)
+        {
+            try
+            {
+                string query = "SELECT * FROM clients";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                MySqlDataReader reader = command.ExecuteReader();
+                DataTable table = new DataTable();
+                table.Load(reader);
+                dataGridView.DataSource = table;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors du chargement des patients : " + ex.Message);
+            }
+        }
+        public void DeletPatient(int patientID)
+        {
+            try
+            {
+                // Écrivez ici le code pour supprimer le patient de la base de données en utilisant l'ID
+                // Assurez-vous de prendre des précautions pour éviter les problèmes de suppression (comme la vérification des dépendances).
+
+                string query = "DELETE FROM clients WHERE id = @patientID";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@patientID", patientID);
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Patient supprimé avec succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de la suppression du patient : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+        public void UpdatePatient(int patientID, string newNom, string newPrenom, string newNumero, string newCodePostal, string newEmail)
+        {
+            try
+            {
+                string query = "UPDATE clients SET nom = @newNom, prenom = @newPrenom, numero = @newNumero, email = @newEmail, CP = @newCodePostal WHERE id = @patientID";
+
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@newNom", newNom);
+                command.Parameters.AddWithValue("@newPrenom", newPrenom);
+                command.Parameters.AddWithValue("@newNumero", newNumero);
+                command.Parameters.AddWithValue("@newCodePostal", newCodePostal);
+                command.Parameters.AddWithValue("@newEmail", newEmail);
+                command.Parameters.AddWithValue("@patientID", patientID);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                Console.WriteLine($"Nombre de lignes mises à jour : {rowsAffected}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors de la mise à jour des données du patient : " + ex.Message);
+            }
+        }
+//fin patient 
 
         public void InsertDataMedicament(string nom, string description, int quantite, decimal prix)
         {
@@ -102,37 +212,12 @@ namespace Medmanager
 
             try
             {
-                string query = "SELECT * FROM medicaments";
+                string query = "SELECT id, nom, description, quantite, prix FROM medicaments";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 MySqlDataReader reader = command.ExecuteReader();
                 DataTable table = new DataTable();
                 table.Load(reader);
                 dataGridView.DataSource = table;
-
-
-/*                while (reader.Read())
-                {
-                    string nom = reader.GetString("nom");
-                    string description = reader.GetString("description");
-                    int quantite = reader.GetInt32("quantite");
-                    decimal prix = reader.GetDecimal("prix");
-
-                    Drug medicament = new Drug(nom, description, quantite, prix);
-                    medicamentList.Add(medicament);
-
-                }
-                
-
-                reader.Close();
-
-                // Effacer les données existantes dans le DataGridView
-                dataGridView.Rows.Clear();
-
-                // Ajouter les nouvelles données au DataGridView
-                foreach (Drug medicament in medicamentList)
-                {
-                    dataGridView.Rows.Add(medicament.name, medicament.description, medicament.quantite, medicament.prix);
-                }*/
 
             }
             catch(Exception ex)
@@ -140,6 +225,29 @@ namespace Medmanager
                 Console.WriteLine("Erreur lecture médicament : " + ex.Message);
             }
             return medicamentList;
+        }
+
+        public void UpdateMedicament(int medicamentID, string newNom, string newDescription, int newQuantite, decimal newPrix)
+        {
+            try
+            {
+                string query = "UPDATE medicaments SET nom = @newNom, description = @newDescription, quantite = @newQuantite, prix = @newPrix WHERE id = @medicamentID";
+
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@newNom", newNom);
+                command.Parameters.AddWithValue("@newDescription", newDescription);
+                command.Parameters.AddWithValue("@newQuantite", newQuantite);
+                command.Parameters.AddWithValue("@newPrix", newPrix);
+                command.Parameters.AddWithValue("@medicamentID", medicamentID);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                Console.WriteLine($"Nombre de lignes mises à jour : {rowsAffected}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors de la mise à jour des données : " + ex.Message);
+            }
         }
 
         public void InsertDataConsultation(int selectedId, string typeConsultation, DateTime dateConsultation, string commentaire, ListBox listBox)
@@ -173,33 +281,9 @@ namespace Medmanager
 
 
 
-        public void LoadPatients(ListBox listBox)
-        {
-            try
-            {
-                string query = "SELECT id, nom, prenom , numero, CP FROM clients"; 
-                MySqlCommand command = new MySqlCommand(query, conn);
-                MySqlDataReader reader = command.ExecuteReader();
 
-                while (reader.Read())
-                {
-                    int id = reader.GetInt32("id");
-                    string nom = reader.GetString("nom");
-                    string prenom = reader.GetString("prenom");
-                    string numero = reader.GetString("numero");
-                    string codePostal = reader.GetString("CP");
-                    string informations = $"{nom} {prenom} - {numero} - {codePostal}";
 
-                    listBox.Items.Add(informations);
-                }
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Erreur lors du chargement des patients : " + ex.Message);
-            }
-        }
+       
     }
 
 }

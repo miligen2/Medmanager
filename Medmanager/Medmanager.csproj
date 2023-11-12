@@ -128,6 +128,18 @@
     <Compile Include="Ajouter medicament\AMedicament.Designer.cs">
       <DependentUpon>AMedicament.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ajouter patient\CPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajouter patient\CPatient.Designer.cs">
+      <DependentUpon>CPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ajouter patient\FormModifier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajouter patient\FormModifier.Designer.cs">
+      <DependentUpon>FormModifier.cs</DependentUpon>
+    </Compile>
     <Compile Include="Connection_DB.cs" />
     <Compile Include="DrugDataAcces.cs" />
     <Compile Include="model\Drug.cs" />
@@ -143,6 +155,7 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="model\Patient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Ajouter Consultation\AConsultation.resx">
@@ -162,6 +175,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ajouter medicament\FormDetails.resx">
       <DependentUpon>FormDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ajouter patient\CPatient.resx">
+      <DependentUpon>CPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ajouter patient\FormModifier.resx">
+      <DependentUpon>FormModifier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

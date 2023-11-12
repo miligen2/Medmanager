@@ -12,11 +12,29 @@ namespace Medmanager
 {
     public partial class FormDetails : Form
     {
-        public FormDetails(string name, string description)
+        private int medicamentID;
+        private Connection_DB conn = new Connection_DB();
+
+        public void InitializeForm(DataGridViewRow selectedRow)
+        {
+            // Initialisez les contrôles avec les données de la ligne sélectionnée
+            textBox1.Text = selectedRow.Cells["nom"].Value.ToString();
+            textBox2.Text = selectedRow.Cells["description"].Value.ToString();
+            numericUpDownQuantité.Value = Convert.ToDecimal(selectedRow.Cells["quantite"].Value);
+            numericUpDownPrix.Value = Convert.ToDecimal(selectedRow.Cells["prix"].Value);
+
+            medicamentID = Convert.ToInt32(selectedRow.Cells["id"].Value);
+
+            if ((int)numericUpDownQuantité.Value == 0)
+            {
+                // Affichez la ligne en rouge
+                numericUpDownQuantité.BackColor = Color.Red;
+            }
+        }
+        public FormDetails()
         {
             InitializeComponent();
-            this.textBox1.Text = name;
-            this.textBox2.Text = description;
+            conn.Open();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -31,10 +49,46 @@ namespace Medmanager
 
         private void buttonValider_Click(object sender, EventArgs e)
         {
-            string name = this.textBox1.Text;
-            string description = this.textBox2.Text;
+            try
+            {
+                // Récupérez les valeurs modifiées
+                string newNom = textBox1.Text;
+                string newDescription = textBox2.Text;
+                int newQuantite = (int)numericUpDownQuantité.Value;
+                decimal newPrix = numericUpDownPrix.Value;
 
-            this.Close();
+                // Appelez la méthode UpdateMedicament pour effectuer la mise à jour
+                conn.UpdateMedicament(medicamentID, newNom, newDescription, newQuantite, newPrix);
+
+                // Fermez le formulaire après la mise à jour
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de la mise à jour des données : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private void numericUpDownQuantité_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDownPrix_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

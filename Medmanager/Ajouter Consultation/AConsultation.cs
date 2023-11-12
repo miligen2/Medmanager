@@ -24,7 +24,7 @@ namespace Medmanager
         }
         private void LoadPatients()
         {
-            connection.LoadPatients(listBox1);
+            connection.ReadPatients(dataGridView1);
         }
 
 
@@ -104,6 +104,11 @@ namespace Medmanager
             {
                 MessageBox.Show("Erreur lors de l'insertion des données de consultation : " + ex.Message);
             }
+        }
+
+        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.SqlServer.Server;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +15,8 @@ namespace Medmanager
 {
     public partial class AMedicament : Form
     {
-        private DrugDataAcces dataAccess= new DrugDataAcces();
-            
+        Connection_DB connection = new Connection_DB();
+
         public AMedicament()
         {
             InitializeComponent();
@@ -24,11 +25,6 @@ namespace Medmanager
 
         private void buttonValider_Click(object sender, EventArgs e)
         {
-
-            Connection_DB connection = new Connection_DB();
-
-      
-
 
             if (textBox1.Text.Length == 0 || textBox2.Text.Length == 0)
             {
@@ -58,11 +54,7 @@ namespace Medmanager
 
 
         }
-        public void updateDataGridView()
-        {
-            this.dataGridView1.DataSource = null;
-            this.dataGridView1.DataSource = dataAccess.getDrugList();
-        }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -71,27 +63,6 @@ namespace Medmanager
 
         private void label2_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-      
-
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-
-                // Récupérer les valeurs des cellules de la ligne sélectionnée
-                
-                string name = selectedRow.Cells["Name"].Value.ToString();
-                string description = selectedRow.Cells["Description"].Value.ToString();
-                
-
-                // Afficher les détails de la ligne dans une fenêtre modale
-                FormDetails formDetails = new FormDetails(name, description);
-                formDetails.Show();
-            }
 
         }
 
@@ -124,5 +95,6 @@ namespace Medmanager
         {
 
         }
+
     }
 }

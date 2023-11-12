@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Medmanager.Ajouter_Consultation;
 using Medmanager.Ajouter_medicament;
+using Medmanager.Ajouter_patient;
 using MySql.Data.MySqlClient;
 
 
@@ -25,8 +26,13 @@ namespace Medmanager
 
       
             Connection_DB connection = new Connection_DB();
-
             connection.Open();
+
+            int numberOfConsultations = connection.GetNumberOfConsultations();
+            label4.Text = $"Nombre de consultations : {numberOfConsultations}";
+
+            int numberOfPatients = connection.GetNumberOfPatients();
+            label3.Text = $"Nombre de patient : {numberOfPatients}";
 
         }
 
@@ -61,10 +67,6 @@ namespace Medmanager
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void consultationToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -97,6 +99,12 @@ namespace Medmanager
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void consulterPatientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CPatient cPatient = new CPatient();
+            cPatient.Show();
         }
     }
 }
