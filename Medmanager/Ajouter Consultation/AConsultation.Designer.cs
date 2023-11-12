@@ -36,8 +36,6 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.buttonValider = new System.Windows.Forms.Button();
-            this.buttonAnnuler = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -88,36 +86,36 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(316, 254);
+            this.textBox1.Location = new System.Drawing.Point(206, 254);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(224, 116);
+            this.textBox1.Size = new System.Drawing.Size(380, 116);
             this.textBox1.TabIndex = 4;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(316, 213);
+            this.dateTimePicker2.Location = new System.Drawing.Point(206, 208);
             this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(224, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(249, 20);
             this.dateTimePicker2.TabIndex = 6;
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(316, 178);
+            this.textBox3.Location = new System.Drawing.Point(206, 180);
             this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(224, 20);
+            this.textBox3.Size = new System.Drawing.Size(249, 20);
             this.textBox3.TabIndex = 8;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // buttonValider
             // 
             this.buttonValider.BackColor = System.Drawing.Color.SeaGreen;
-            this.buttonValider.Location = new System.Drawing.Point(76, 394);
+            this.buttonValider.Location = new System.Drawing.Point(379, 402);
             this.buttonValider.Margin = new System.Windows.Forms.Padding(2);
             this.buttonValider.Name = "buttonValider";
             this.buttonValider.Size = new System.Drawing.Size(76, 37);
@@ -126,44 +124,22 @@
             this.buttonValider.UseVisualStyleBackColor = false;
             this.buttonValider.Click += new System.EventHandler(this.buttonValider_Click);
             // 
-            // buttonAnnuler
-            // 
-            this.buttonAnnuler.BackColor = System.Drawing.Color.DarkRed;
-            this.buttonAnnuler.Location = new System.Drawing.Point(190, 394);
-            this.buttonAnnuler.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonAnnuler.Name = "buttonAnnuler";
-            this.buttonAnnuler.Size = new System.Drawing.Size(76, 37);
-            this.buttonAnnuler.TabIndex = 10;
-            this.buttonAnnuler.Text = "Annuler";
-            this.buttonAnnuler.UseVisualStyleBackColor = false;
-            this.buttonAnnuler.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(316, 51);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(224, 95);
-            this.listBox1.TabIndex = 11;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged_1);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(316, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(206, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(748, 153);
             this.dataGridView1.TabIndex = 12;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // AConsultation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(604, 507);
+            this.ClientSize = new System.Drawing.Size(961, 487);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.buttonAnnuler);
             this.Controls.Add(this.buttonValider);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.dateTimePicker2);
@@ -192,8 +168,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button buttonValider;
-        private System.Windows.Forms.Button buttonAnnuler;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

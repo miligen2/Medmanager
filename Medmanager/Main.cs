@@ -106,5 +106,16 @@ namespace Medmanager
             CPatient cPatient = new CPatient();
             cPatient.Show();
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listeConsultationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LConsultation lConsultation = new LConsultation();
+            lConsultation.Show();
+        }
     }
 }

@@ -131,12 +131,13 @@
             // 
             // suppr
             // 
+            this.suppr.BackColor = System.Drawing.Color.IndianRed;
             this.suppr.Location = new System.Drawing.Point(293, 279);
             this.suppr.Name = "suppr";
             this.suppr.Size = new System.Drawing.Size(75, 37);
             this.suppr.TabIndex = 17;
             this.suppr.Text = "Supprimer";
-            this.suppr.UseVisualStyleBackColor = true;
+            this.suppr.UseVisualStyleBackColor = false;
             this.suppr.Click += new System.EventHandler(this.suppr_Click);
             // 
             // FormDetails

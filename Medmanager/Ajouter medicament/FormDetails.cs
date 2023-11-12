@@ -95,6 +95,7 @@ namespace Medmanager
         private void suppr_Click(object sender, EventArgs e)
         {
             conn.DeletMedicament(medicamentID);
+            this.Close();
         }
     }
 }

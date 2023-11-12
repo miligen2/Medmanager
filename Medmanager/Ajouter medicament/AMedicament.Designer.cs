@@ -33,7 +33,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.buttonAnnuler = new System.Windows.Forms.Button();
             this.buttonValider = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -92,18 +91,6 @@
             this.textBox2.TabIndex = 4;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // buttonAnnuler
-            // 
-            this.buttonAnnuler.BackColor = System.Drawing.Color.DarkRed;
-            this.buttonAnnuler.Location = new System.Drawing.Point(628, 321);
-            this.buttonAnnuler.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonAnnuler.Name = "buttonAnnuler";
-            this.buttonAnnuler.Size = new System.Drawing.Size(76, 37);
-            this.buttonAnnuler.TabIndex = 12;
-            this.buttonAnnuler.Text = "Supprimer";
-            this.buttonAnnuler.UseVisualStyleBackColor = false;
-            this.buttonAnnuler.Click += new System.EventHandler(this.buttonAnnuler_Click);
-            // 
             // buttonValider
             // 
             this.buttonValider.BackColor = System.Drawing.Color.SeaGreen;
@@ -156,12 +143,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 522);
+            this.ClientSize = new System.Drawing.Size(611, 406);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.buttonAnnuler);
             this.Controls.Add(this.buttonValider);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -184,7 +170,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button buttonAnnuler;
         private System.Windows.Forms.Button buttonValider;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numericUpDown1;

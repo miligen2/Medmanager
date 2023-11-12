@@ -40,7 +40,6 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.buttonAnnuler = new System.Windows.Forms.Button();
             this.buttonValider = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -169,18 +168,6 @@
             this.dateTimePicker1.TabIndex = 12;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
-            // buttonAnnuler
-            // 
-            this.buttonAnnuler.BackColor = System.Drawing.Color.DarkRed;
-            this.buttonAnnuler.Location = new System.Drawing.Point(387, 274);
-            this.buttonAnnuler.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonAnnuler.Name = "buttonAnnuler";
-            this.buttonAnnuler.Size = new System.Drawing.Size(76, 37);
-            this.buttonAnnuler.TabIndex = 14;
-            this.buttonAnnuler.Text = "Annuler";
-            this.buttonAnnuler.UseVisualStyleBackColor = false;
-            this.buttonAnnuler.Click += new System.EventHandler(this.buttonAnnuler_Click_1);
-            // 
             // buttonValider
             // 
             this.buttonValider.BackColor = System.Drawing.Color.SeaGreen;
@@ -198,7 +185,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
-            this.Controls.Add(this.buttonAnnuler);
             this.Controls.Add(this.buttonValider);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBox5);
@@ -235,7 +221,6 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button buttonAnnuler;
         private System.Windows.Forms.Button buttonValider;
     }
 }

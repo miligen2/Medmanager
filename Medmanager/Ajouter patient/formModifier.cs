@@ -93,6 +93,7 @@ namespace Medmanager.Ajouter_patient
         {
             // Call the DeletPatient method to delete the patient
             connection.DeletPatient(patientID);
+            this.Close();
         }
     }
 }

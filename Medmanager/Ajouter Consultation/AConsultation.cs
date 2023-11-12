@@ -82,22 +82,34 @@ namespace Medmanager
         {
             try
             {
-                if (listBox1.SelectedItem != null)
+                if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    string selectedClientInfo = listBox1.SelectedItem.ToString();
+                    // Récupérer les informations du client sélectionné dans la dataGridView1
+                    DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                    int clienId = Convert.ToInt32(selectedRow.Cells["id"].Value);
 
-                    string[] clientInfos = selectedClientInfo.Split('-');
-                    string idString = clientInfos[1].Trim();
-                    int selectedId = int.Parse(idString);
+                    // Récupérer les informations de la consultation
                     string typeConsultation = textBox1.Text;
-                    string commentaire = textBox3.Text;
                     DateTime dateConsultation = dateTimePicker2.Value;
+                    string commentaire = textBox3.Text;
 
-                    connection.InsertDataConsultation(selectedId, typeConsultation, dateConsultation, commentaire, listBox1);
+                    // Insérer les données de la consultation dans la base de données
+                    connection.InsertDataConsultation(clienId, typeConsultation, dateConsultation, commentaire);
+
+                    // Rafraîchir la liste des patients après l'insertion
+                    LoadPatients();
+
+                    // Effacer les champs de saisie
+                    textBox1.Text = "";
+                    textBox3.Text = "";
+                    dateTimePicker2.Value = DateTime.Now;
+
+
+                    MessageBox.Show("Consultation ajoutée avec succès.");
                 }
                 else
                 {
-                    MessageBox.Show("Veuillez sélectionner un client.");
+                    MessageBox.Show("Veuillez sélectionner un client dans la liste.");
                 }
             }
             catch (Exception ex)
@@ -107,6 +119,11 @@ namespace Medmanager
         }
 
         private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

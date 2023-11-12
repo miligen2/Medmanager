@@ -132,6 +132,7 @@
             this.listeConsultationToolStripMenuItem.Name = "listeConsultationToolStripMenuItem";
             this.listeConsultationToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
             this.listeConsultationToolStripMenuItem.Text = "Liste Consultation";
+            this.listeConsultationToolStripMenuItem.Click += new System.EventHandler(this.listeConsultationToolStripMenuItem_Click);
             // 
             // ajouterConsultationToolStripMenuItem
             // 
@@ -184,12 +185,13 @@
             this.label4.Size = new System.Drawing.Size(183, 20);
             this.label4.TabIndex = 5;
             this.label4.Text = "nombre de consultation :";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(795, 558);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox1);

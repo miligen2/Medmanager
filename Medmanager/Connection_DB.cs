@@ -1,5 +1,7 @@
-﻿using Medmanager.model;
+﻿using Medmanager.Ajouter_Consultation;
+using Medmanager.model;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using MySqlX.XDevAPI.Relational;
 using Org.BouncyCastle.Asn1.BC;
 using System;
@@ -249,35 +251,6 @@ namespace Medmanager
                 Console.WriteLine("Erreur lors de la mise à jour des données : " + ex.Message);
             }
         }
-
-        public void InsertDataConsultation(int selectedId, string typeConsultation, DateTime dateConsultation, string commentaire, ListBox listBox)
-        {
-            try
-            {
-                string clientInfo = listBox.SelectedItem.ToString();
-                string[] clientInfos = clientInfo.Split('-');
-                string nomPrenom = clientInfos[0].Trim();
-                string[] nomPrenomParts = nomPrenom.Split(' ');
-                string nom = nomPrenomParts[0];
-                string prenom = nomPrenomParts[1];
-
-                string query = "INSERT INTO consultations (typeConsultation, commentaire, dateConsultation, clientId) VALUES (@typeConsultation, @commentaire, @dateConsultation, @clientId)";
-                MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.AddWithValue("@typeConsultation", typeConsultation);
-                command.Parameters.AddWithValue("@commentaire", commentaire);
-                command.Parameters.AddWithValue("@dateConsultation", dateConsultation);
-                command.Parameters.AddWithValue("@clientId", selectedId);
-
-                int rowsAffected = command.ExecuteNonQuery();
-
-                Console.WriteLine($"Nombre de lignes insérées : {rowsAffected}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Erreur lors de l'insertion des données de consultation : " + ex.Message);
-            }
-        }
-
         public void DeletMedicament(int medicamentID)
         {
             try
@@ -301,6 +274,106 @@ namespace Medmanager
             }
 
         }
+
+        public void InsertDataConsultation(int clientId, string typeConsultation, DateTime dateConsultation, string commentaire)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Construire votre commande SQL d'insertion
+                    string query = "INSERT INTO consultations (clientId, typeConsultation, dateConsultation, commentaire) " +
+                                   "VALUES (@clientId, @typeConsultation, @dateConsultation, @commentaire)";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@clientId", clientId);
+                        cmd.Parameters.AddWithValue("@typeConsultation", typeConsultation);
+                        cmd.Parameters.AddWithValue("@dateConsultation", dateConsultation);
+                        cmd.Parameters.AddWithValue("@commentaire", commentaire);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Gérer l'exception (enregistrez dans un fichier journal, affichez un message d'erreur, etc.)
+                throw new Exception("Erreur lors de l'insertion des données de consultation : " + ex.Message);
+            }
+        }
+
+        public void UpdateConsultation(int consultationID, string newTypeConsultation, string newCommentaire, DateTime newDateConsultation)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Mettre à jour les informations de la consultation
+                    string queryConsultation = "UPDATE consultations SET typeConsultation = @typeConsultation, " +
+                                               "dateConsultation = @dateConsultation, commentaire = @commentaire " +
+                                               "WHERE id = @consultationId";
+
+                    using (MySqlCommand cmdConsultation = new MySqlCommand(queryConsultation, connection))
+                    {
+                        cmdConsultation.Parameters.AddWithValue("@typeConsultation", newTypeConsultation);
+                        cmdConsultation.Parameters.AddWithValue("@dateConsultation", newDateConsultation);
+                        cmdConsultation.Parameters.AddWithValue("@commentaire", newCommentaire);
+                        cmdConsultation.Parameters.AddWithValue("@consultationId", consultationID);
+
+                        cmdConsultation.ExecuteNonQuery();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                // Gérer l'exception
+                throw new Exception("Erreur lors de la mise à jour de la consultation : " + ex.Message);
+            }
+        }
+
+
+
+        public void ReadConsultationsWithPatients(DataGridView dataGridView)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Construire votre commande SQL avec une jointure entre les tables
+                    string query = "SELECT consultations.id, clients.nom, clients.prenom, " +
+                                   "consultations.typeConsultation, consultations.dateConsultation, consultations.commentaire " +
+                                   "FROM consultations " +
+                                   "INNER JOIN clients ON consultations.clientId = clients.id";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    {
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+
+                            // Associer les données à la dataGridView
+                            dataGridView.DataSource = dataTable;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Gérer l'exception
+                throw new Exception("Erreur lors de la lecture des consultations : " + ex.Message);
+            }
+        }
+
+
 
 
 
