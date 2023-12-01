@@ -34,6 +34,7 @@ namespace Medmanager
 
             string nom = textBox1.Text;
             string description = textBox2.Text;
+            string famille = textBox3.Text;
             int quantite = (int)numericUpDown1.Value;
             decimal prix = numericUpDown2.Value;
 
@@ -41,7 +42,7 @@ namespace Medmanager
             if (connection.Open())
             {
 
-                connection.InsertDataMedicament(nom, description, quantite, prix);
+                connection.InsertDataMedicament(nom, description, famille, quantite, prix);
 
                 connection.Close();
             }
@@ -96,5 +97,14 @@ namespace Medmanager
 
         }
 
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

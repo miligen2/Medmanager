@@ -86,6 +86,7 @@
             this.medicamentParFamilleToolStripMenuItem.Name = "medicamentParFamilleToolStripMenuItem";
             this.medicamentParFamilleToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
             this.medicamentParFamilleToolStripMenuItem.Text = "Medicament par Famille";
+            this.medicamentParFamilleToolStripMenuItem.Click += new System.EventHandler(this.medicamentParFamilleToolStripMenuItem_Click);
             // 
             // ajoutMédicamentsToolStripMenuItem
             // 
@@ -130,15 +131,15 @@
             // listeConsultationToolStripMenuItem
             // 
             this.listeConsultationToolStripMenuItem.Name = "listeConsultationToolStripMenuItem";
-            this.listeConsultationToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
-            this.listeConsultationToolStripMenuItem.Text = "Liste Consultation";
+            this.listeConsultationToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.listeConsultationToolStripMenuItem.Text = "Liste / Modifier Consultation";
             this.listeConsultationToolStripMenuItem.Click += new System.EventHandler(this.listeConsultationToolStripMenuItem_Click);
             // 
             // ajouterConsultationToolStripMenuItem
             // 
             this.ajouterConsultationToolStripMenuItem.Name = "ajouterConsultationToolStripMenuItem";
-            this.ajouterConsultationToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
-            this.ajouterConsultationToolStripMenuItem.Text = "Ajouter / Modifier Consultation";
+            this.ajouterConsultationToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.ajouterConsultationToolStripMenuItem.Text = "Ajouter Consultation";
             this.ajouterConsultationToolStripMenuItem.Click += new System.EventHandler(this.ajouterConsultationToolStripMenuItem_Click);
             // 
             // label1
@@ -191,7 +192,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(795, 558);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox1);

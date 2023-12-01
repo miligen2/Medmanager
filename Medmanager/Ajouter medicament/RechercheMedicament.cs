@@ -10,21 +10,29 @@ using System.Windows.Forms;
 
 namespace Medmanager.Ajouter_medicament
 {
-    public partial class LMedicament : Form
+    public partial class RechercheMedicament : Form
     {
         private Connection_DB conn = new Connection_DB();
-        public LMedicament()
+        public RechercheMedicament()
         {
             InitializeComponent();
             conn.Open();
-            loadMedicament();
+            LoadFamilies();
+        }
+        private void LoadFamilies()
+        {
+            // Chargez les types de famille uniques depuis la base de données
+            List<string> families = conn.GetUniqueFamilies();
+
+            // Ajoutez les types de famille au ComboBox
+            comboBoxFamilies.Items.AddRange(families.ToArray());
         }
         private void loadMedicament()
         {
-            conn.ReadMedicament(dataGridView1);
+            conn.ReadMedicament(dataGridViewMedicaments);
 
             // Parcourez toutes les lignes de la DataGridView
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            foreach (DataGridViewRow row in dataGridViewMedicaments.Rows)
             {
                 // Vérifiez si la colonne "quantite" a une valeur égale à zéro
                 int quantite = Convert.ToInt32(row.Cells["quantite"].Value);
@@ -36,30 +44,34 @@ namespace Medmanager.Ajouter_medicament
             }
 
             // Mise à jour visuelle de la DataGridView
-            dataGridView1.Refresh();
+            dataGridViewMedicaments.Refresh();
         }
 
-
-        private void label1_Click(object sender, EventArgs e)
+        private void RechercheMedicament_Load(object sender, EventArgs e)
         {
 
         }
 
+        private void comboBoxFamilies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedFamily = comboBoxFamilies.SelectedItem.ToString();
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+            // Chargez les médicaments de la famille sélectionnée depuis la base de données
+            conn.ReadMedicamentsByFamily(dataGridViewMedicaments, selectedFamily);
+        }
+
+        private void dataGridViewMedicaments_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
-
 
         private void button1_Click(object sender, EventArgs e)
         {
             // On regarde si une ligne est sélectionnée
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (dataGridViewMedicaments.SelectedRows.Count > 0)
             {
                 // Obtenez la ligne sélectionnée
-                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                DataGridViewRow selectedRow = dataGridViewMedicaments.SelectedRows[0];
 
                 // Créez une instance du formulaire de modification
                 FormDetails formModifier = new FormDetails();
@@ -74,6 +86,6 @@ namespace Medmanager.Ajouter_medicament
                 loadMedicament();
             }
         }
-
     }
 }
+

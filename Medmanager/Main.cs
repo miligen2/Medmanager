@@ -117,5 +117,10 @@ namespace Medmanager
             LConsultation lConsultation = new LConsultation();
             lConsultation.Show();
         }
+
+        private void medicamentParFamilleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RechercheMedicament rechercheMedicament = new RechercheMedicament(); rechercheMedicament.Show();
+        }
     }
 }

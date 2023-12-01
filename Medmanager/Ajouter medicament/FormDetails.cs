@@ -21,6 +21,7 @@ namespace Medmanager
             // Initialisez les contrôles avec les données de la ligne sélectionnée
             textBox1.Text = selectedRow.Cells["nom"].Value.ToString();
             textBox2.Text = selectedRow.Cells["description"].Value.ToString();
+            textBoxFamille.Text = selectedRow.Cells["famille"].Value.ToString();
             numericUpDownQuantité.Value = Convert.ToDecimal(selectedRow.Cells["quantite"].Value);
             numericUpDownPrix.Value = Convert.ToDecimal(selectedRow.Cells["prix"].Value);
 
@@ -55,11 +56,12 @@ namespace Medmanager
                 // Récupérez les valeurs modifiées
                 string newNom = textBox1.Text;
                 string newDescription = textBox2.Text;
+                string newFamille = textBoxFamille.Text;
                 int newQuantite = (int)numericUpDownQuantité.Value;
                 decimal newPrix = numericUpDownPrix.Value;
 
                 // Appelez la méthode UpdateMedicament pour effectuer la mise à jour
-                conn.UpdateMedicament(medicamentID, newNom, newDescription, newQuantite, newPrix);
+                conn.UpdateMedicament(medicamentID, newNom, newDescription,newFamille, newQuantite, newPrix);
 
                 // Fermez le formulaire après la mise à jour
                 this.Close();
@@ -96,6 +98,16 @@ namespace Medmanager
         {
             conn.DeletMedicament(medicamentID);
             this.Close();
+        }
+
+        private void FormDetails_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxFamille_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

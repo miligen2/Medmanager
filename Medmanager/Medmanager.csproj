@@ -122,6 +122,12 @@
     <Compile Include="Ajouter medicament\LMedicament.Designer.cs">
       <DependentUpon>LMedicament.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ajouter medicament\RechercheMedicament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajouter medicament\RechercheMedicament.Designer.cs">
+      <DependentUpon>RechercheMedicament.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ajouter patient\APatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ajouter medicament\LMedicament.resx">
       <DependentUpon>LMedicament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ajouter medicament\RechercheMedicament.resx">
+      <DependentUpon>RechercheMedicament.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ajouter patient\APatient.resx">
       <DependentUpon>APatient.cs</DependentUpon>

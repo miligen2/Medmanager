@@ -184,17 +184,18 @@ namespace Medmanager
                 Console.WriteLine("Erreur lors de la mise à jour des données du patient : " + ex.Message);
             }
         }
-//fin patient 
+        //fin patient 
 
-        public void InsertDataMedicament(string nom, string description, int quantite, decimal prix)
+        public void InsertDataMedicament(string nom, string description, string famille, int quantite, decimal prix)
         {
             try
             {
-                string query = "INSERT INTO medicaments (nom, description, quantite, prix) VALUES (@nom, @description, @quantite, @prix)";
+                string query = "INSERT INTO medicaments (nom, description,famille, quantite, prix) VALUES (@nom, @description, @famille, @quantite, @prix)";
 
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@nom", nom);
                 command.Parameters.AddWithValue("@description", description);
+                command.Parameters.AddWithValue("@famille", famille);
                 command.Parameters.AddWithValue("@quantite", quantite);
                 command.Parameters.AddWithValue("@prix", prix);
 
@@ -214,7 +215,7 @@ namespace Medmanager
 
             try
             {
-                string query = "SELECT id, nom, description, quantite, prix FROM medicaments";
+                string query = "SELECT id, nom, description, famille, quantite, prix FROM medicaments";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 MySqlDataReader reader = command.ExecuteReader();
                 DataTable table = new DataTable();
@@ -229,15 +230,16 @@ namespace Medmanager
             return medicamentList;
         }
 
-        public void UpdateMedicament(int medicamentID, string newNom, string newDescription, int newQuantite, decimal newPrix)
+        public void UpdateMedicament(int medicamentID, string newNom, string newDescription,string newFamille, int newQuantite, decimal newPrix)
         {
             try
             {
-                string query = "UPDATE medicaments SET nom = @newNom, description = @newDescription, quantite = @newQuantite, prix = @newPrix WHERE id = @medicamentID";
+                string query = "UPDATE medicaments SET nom = @newNom, description = @newDescription, famille = @newFamille, quantite = @newQuantite, prix = @newPrix WHERE id = @medicamentID";
 
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@newNom", newNom);
                 command.Parameters.AddWithValue("@newDescription", newDescription);
+                command.Parameters.AddWithValue("@newFamille", newFamille);
                 command.Parameters.AddWithValue("@newQuantite", newQuantite);
                 command.Parameters.AddWithValue("@newPrix", newPrix);
                 command.Parameters.AddWithValue("@medicamentID", medicamentID);
@@ -255,9 +257,6 @@ namespace Medmanager
         {
             try
             {
-                // Écrivez ici le code pour supprimer le patient de la base de données en utilisant l'ID
-                // Assurez-vous de prendre des précautions pour éviter les problèmes de suppression (comme la vérification des dépendances).
-
                 string query = "DELETE FROM medicaments WHERE id = @medicamentID";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -275,7 +274,66 @@ namespace Medmanager
 
         }
 
-        public void InsertDataConsultation(int clientId, string typeConsultation, DateTime dateConsultation, string commentaire)
+        public void ReadMedicamentsByFamily(DataGridView dataGridView, string famille)
+        {
+            try
+            {
+                string query = $"SELECT * FROM medicaments WHERE famille = '{famille}'";
+
+                // Utilisez un objet MySqlCommand pour exécuter la requête
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    // Utilisez un objet MySqlDataAdapter pour remplir un DataTable avec les résultats de la requête
+                    using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+
+                        // Liez le DataTable à la DataGridView pour afficher les résultats
+                        dataGridView.DataSource = dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de la lecture des médicaments par famille : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public List<string> GetUniqueFamilies()
+        {
+            List<string> families = new List<string>();
+
+            try
+            {
+                // Utilisez un objet MySqlCommand pour exécuter la requête SQL
+                using (MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT famille FROM medicaments", conn))
+                {
+                    // Ouvrez la connexion si elle n'est pas déjà ouverte
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+
+                    // Utilisez un objet MySqlDataReader pour lire les résultats de la requête
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        // Parcourez les résultats et ajoutez chaque famille à la liste
+                        while (reader.Read())
+                        {
+                            families.Add(reader["famille"].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de la récupération des familles : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return families;
+        }
+
+            public void InsertDataConsultation(int clientId, string typeConsultation, DateTime dateConsultation, string commentaire)
         {
             try
             {
