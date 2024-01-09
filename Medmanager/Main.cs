@@ -75,8 +75,8 @@ namespace Medmanager
 
         private void ajouterConsultationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-         AConsultation aConsultation = new AConsultation();
-            aConsultation.Show();
+         AOrdonnance aOrdonnance = new AOrdonnance();
+            aOrdonnance.Show();
         }
 
         private void ajoutMédicamentsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,6 +121,12 @@ namespace Medmanager
         private void medicamentParFamilleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RechercheMedicament rechercheMedicament = new RechercheMedicament(); rechercheMedicament.Show();
+        }
+
+        private void créerUneOrdonnanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AOrdonnance aOrdonnance = new AOrdonnance();
+            aOrdonnance.Show();
         }
     }
 }

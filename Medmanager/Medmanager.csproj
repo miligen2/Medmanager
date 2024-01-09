@@ -98,22 +98,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ajouter Consultation\AConsultation.cs">
+    <Compile Include="Ajouter Ordonnance\AOrdonnance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ajouter Consultation\AConsultation.Designer.cs">
-      <DependentUpon>AConsultation.cs</DependentUpon>
+    <Compile Include="Ajouter Ordonnance\AOrdonnance.Designer.cs">
+      <DependentUpon>AOrdonnance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ajouter Consultation\FormConsultation.cs">
+    <Compile Include="Ajouter Ordonnance\FormConsultation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ajouter Consultation\FormConsultation.Designer.cs">
+    <Compile Include="Ajouter Ordonnance\FormConsultation.Designer.cs">
       <DependentUpon>FormConsultation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ajouter Consultation\LConsultation.cs">
+    <Compile Include="Ajouter Ordonnance\LConsultation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ajouter Consultation\LConsultation.Designer.cs">
+    <Compile Include="Ajouter Ordonnance\LConsultation.Designer.cs">
       <DependentUpon>LConsultation.cs</DependentUpon>
     </Compile>
     <Compile Include="Ajouter medicament\LMedicament.cs">
@@ -170,13 +170,13 @@
     <Compile Include="model\Patient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Ajouter Consultation\AConsultation.resx">
-      <DependentUpon>AConsultation.cs</DependentUpon>
+    <EmbeddedResource Include="Ajouter Ordonnance\AOrdonnance.resx">
+      <DependentUpon>AOrdonnance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ajouter Consultation\FormConsultation.resx">
+    <EmbeddedResource Include="Ajouter Ordonnance\FormConsultation.resx">
       <DependentUpon>FormConsultation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ajouter Consultation\LConsultation.resx">
+    <EmbeddedResource Include="Ajouter Ordonnance\LConsultation.resx">
       <DependentUpon>LConsultation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ajouter medicament\AMedicament.resx">

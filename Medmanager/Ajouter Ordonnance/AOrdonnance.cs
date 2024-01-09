@@ -1,4 +1,5 @@
-﻿using MySqlX.XDevAPI;
+﻿using Medmanager.model;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,75 +13,44 @@ using System.Windows.Forms;
 
 namespace Medmanager
 {
-    public partial class AConsultation : Form
+    public partial class AOrdonnance : Form
     {
 
         private Connection_DB connection = new Connection_DB();
-        public AConsultation()
+        public AOrdonnance()
         {
             InitializeComponent();
             connection.Open();
-            LoadPatients();
+            LoadPatients(); // Appel de la méthode pour charger les patients dans le ComboBox
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
         private void LoadPatients()
         {
-            connection.ReadPatients(dataGridView1);
+            List<Patient> patients = connection.GetPatientsFromDatabase();
+            comboBox1.Items.Clear(); // Efface les éléments précédents du ComboBox
+            foreach (Patient pat in patients)
+            {
+                comboBox1.Items.Add(pat.Nom);
+            }
         }
 
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-            
-        }
+  
 
         private void buttonValider_Click(object sender, EventArgs e)
         {
-            try
+/*            try
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
@@ -115,15 +85,10 @@ namespace Medmanager
             catch (Exception ex)
             {
                 MessageBox.Show("Erreur lors de l'insertion des données de consultation : " + ex.Message);
-            }
+            }*/
         }
 
-        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

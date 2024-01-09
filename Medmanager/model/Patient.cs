@@ -11,18 +11,16 @@ namespace Medmanager.model
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public string Numero { get; set; }
-        public string Email { get; set; }
-        public string CodePostal { get; set; }
-        public DateTime DateEntree { get; set; }
+        public string Sexe { get; set; }
 
-        public Patient(string nom, string prenom, string numero, string email, string codePostal, DateTime dateEntree)
+     
+
+        public Patient(string nom, string prenom,string sexe, string numero)
         {
             this.Nom = nom;
             this.Prenom = prenom;
             this.Numero = numero;
-            this.Email = email;
-            this.CodePostal = codePostal;
-            this.DateEntree = dateEntree;
+            this.Sexe = sexe;
         }
     }
 }

@@ -19,10 +19,9 @@ namespace Medmanager
 
         private string nom;
         private string prenom;
-        private string email;
+        private string sexe;
         private string numero;
-        private string codePostal;
-        private DateTime dateEntree;
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -66,7 +65,7 @@ namespace Medmanager
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            email = textBox3.Text;
+            sexe = textBox3.Text;
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -74,10 +73,6 @@ namespace Medmanager
             numero = textBox4.Text;
         }
 
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-            codePostal = textBox5.Text;
-        }
 
 
         private void buttonValider_Click_1(object sender, EventArgs e)
@@ -87,20 +82,11 @@ namespace Medmanager
             if (connection.Open())
             {
 
-                connection.InsertDataPatient(nom, prenom, email, numero, codePostal, dateEntree);
+                connection.InsertDataPatient(nom, prenom, sexe, numero);
+                Console.WriteLine("valeur ajouté avec succés");
 
                 connection.Close();
             }
-        }
-
-        private void buttonAnnuler_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            dateEntree = dateTimePicker1.Value;
         }
     }
 }

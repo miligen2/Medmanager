@@ -24,12 +24,12 @@ namespace Medmanager.Ajouter_patient
             // Initialisez les contrôles avec les données de la ligne sélectionnée
             textBoxNom.Text = selectedRow.Cells["nom"].Value.ToString();
             textBoxPrenom.Text = selectedRow.Cells["prenom"].Value.ToString();
-            textBoxEmail.Text = selectedRow.Cells["email"].Value.ToString();
+            textBoxSexe.Text = selectedRow.Cells["sexe"].Value.ToString();
             textBoxNumero.Text = selectedRow.Cells["numero"].Value.ToString();
-            textBoxCP.Text = selectedRow.Cells["CP"].Value.ToString();
+  
         
 
-            patientID = Convert.ToInt32(selectedRow.Cells["id"].Value);
+            patientID = Convert.ToInt32(selectedRow.Cells["id_patient"].Value);
         }
 
         public FormModifier()
@@ -45,12 +45,12 @@ namespace Medmanager.Ajouter_patient
                 // Récupérez les valeurs modifiées
                 string newNom = textBoxNom.Text;
                 string newPrenom = textBoxPrenom.Text;
-                string newEmail = textBoxEmail.Text;
+                string newSexe = textBoxSexe.Text;
                 string newNumero = textBoxNumero.Text;
-                string newCodePostal = textBoxCP.Text;
+          
 
                 // Appelez la méthode UpdatePatient pour effectuer la mise à jour
-                connection.UpdatePatient(patientID, newNom, newPrenom, newNumero, newCodePostal, newEmail);
+                connection.UpdatePatient(patientID, newNom, newPrenom,newSexe, newNumero);
 
 
                 // Fermez le formulaire après la mise à jour
@@ -94,6 +94,11 @@ namespace Medmanager.Ajouter_patient
             // Call the DeletPatient method to delete the patient
             connection.DeletPatient(patientID);
             this.Close();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -45,6 +45,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.créerUneOrdonnanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -122,10 +123,11 @@
             // 
             this.consultationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listeConsultationToolStripMenuItem,
-            this.ajouterConsultationToolStripMenuItem});
+            this.ajouterConsultationToolStripMenuItem,
+            this.créerUneOrdonnanceToolStripMenuItem});
             this.consultationToolStripMenuItem.Name = "consultationToolStripMenuItem";
-            this.consultationToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
-            this.consultationToolStripMenuItem.Text = "Consultation";
+            this.consultationToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.consultationToolStripMenuItem.Text = "Ordonnance";
             this.consultationToolStripMenuItem.Click += new System.EventHandler(this.consultationToolStripMenuItem_Click);
             // 
             // listeConsultationToolStripMenuItem
@@ -188,11 +190,17 @@
             this.label4.Text = "nombre de consultation :";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
+            // créerUneOrdonnanceToolStripMenuItem
+            // 
+            this.créerUneOrdonnanceToolStripMenuItem.Name = "créerUneOrdonnanceToolStripMenuItem";
+            this.créerUneOrdonnanceToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.créerUneOrdonnanceToolStripMenuItem.Text = "Créer une Ordonnance";
+            this.créerUneOrdonnanceToolStripMenuItem.Click += new System.EventHandler(this.créerUneOrdonnanceToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(795, 558);
@@ -232,6 +240,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripMenuItem créerUneOrdonnanceToolStripMenuItem;
     }
 }
 

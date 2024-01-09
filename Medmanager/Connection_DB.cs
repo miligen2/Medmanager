@@ -27,7 +27,7 @@ namespace Medmanager
         public Connection_DB()
         {
             string server = "localhost";
-            string database = "medmanager";
+            string database = "medmanager2";
             string user = "root";
             string password = "";
 
@@ -95,19 +95,17 @@ namespace Medmanager
         //fin main 
 
         //patient 
-        public void InsertDataPatient(string nom, string prenom, string email, string numero, string code_postal, DateTime date_entree)
+        public void InsertDataPatient(string nom, string prenom, string sexe, string numero)
         {
             try
             {
-                string query = "INSERT INTO clients (nom, prenom, email, numero, CP, dateEntree) VALUES (@nom, @prenom, @email, @numero, @code_postal, @date)";
+                string query = "INSERT INTO patient (nom, prenom, sexe, numero) VALUES (@nom, @prenom, @sexe, @numero)";
 
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@nom", nom);
                 command.Parameters.AddWithValue("@prenom", prenom);
-                command.Parameters.AddWithValue("@email", email);
+                command.Parameters.AddWithValue("@sexe", sexe);
                 command.Parameters.AddWithValue("@numero", numero);
-                command.Parameters.AddWithValue("@code_postal", code_postal);
-                command.Parameters.AddWithValue("@date", date_entree);
 
                 int rowsAffected = command.ExecuteNonQuery();
 
@@ -118,11 +116,45 @@ namespace Medmanager
                 Console.WriteLine("Erreur lors de l'insertion des données : " + ex.Message);
             }
         }
+        public List<Patient> GetPatientsFromDatabase()
+        {
+            List<Patient> patients = new List<Patient>();
+
+            try
+            {
+                string query = "SELECT nom, prenom, sexe, numero FROM patient";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string nom = reader.GetString(0);
+                    string prenom = reader.GetString(1);
+                    string sexe = reader.GetString(2);
+                    string numero = reader.GetString(3);
+
+                    Patient patient = new Patient(nom,prenom,sexe,numero);
+                    patients.Add(patient);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors de la récupération des patients : " + ex.Message);
+            }
+
+            return patients;
+
+        }
+
+
+
         public void ReadPatients(DataGridView dataGridView)
         {
             try
             {
-                string query = "SELECT * FROM clients";
+                string query = "SELECT * FROM patient";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 MySqlDataReader reader = command.ExecuteReader();
                 DataTable table = new DataTable();
@@ -142,7 +174,7 @@ namespace Medmanager
                 // Écrivez ici le code pour supprimer le patient de la base de données en utilisant l'ID
                 // Assurez-vous de prendre des précautions pour éviter les problèmes de suppression (comme la vérification des dépendances).
 
-                string query = "DELETE FROM clients WHERE id = @patientID";
+                string query = "DELETE FROM patient WHERE id = @patientID";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -161,18 +193,17 @@ namespace Medmanager
 
 
 
-        public void UpdatePatient(int patientID, string newNom, string newPrenom, string newNumero, string newCodePostal, string newEmail)
+        public void UpdatePatient(int patientID, string newNom, string newPrenom, string newSexe, string newNumero)
         {
             try
             {
-                string query = "UPDATE clients SET nom = @newNom, prenom = @newPrenom, numero = @newNumero, email = @newEmail, CP = @newCodePostal WHERE id = @patientID";
+                string query = "UPDATE patient SET nom = @newNom, prenom = @newPrenom, sexe= @newSexe,  numero = @newNumero, WHERE id_patient = @patientID";
 
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@newNom", newNom);
                 command.Parameters.AddWithValue("@newPrenom", newPrenom);
                 command.Parameters.AddWithValue("@newNumero", newNumero);
-                command.Parameters.AddWithValue("@newCodePostal", newCodePostal);
-                command.Parameters.AddWithValue("@newEmail", newEmail);
+                command.Parameters.AddWithValue("@newSexe", newSexe);
                 command.Parameters.AddWithValue("@patientID", patientID);
 
                 int rowsAffected = command.ExecuteNonQuery();

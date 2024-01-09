@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxCP = new System.Windows.Forms.TextBox();
             this.textBoxNumero = new System.Windows.Forms.TextBox();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.textBoxSexe = new System.Windows.Forms.TextBox();
             this.textBoxPrenom = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,15 +39,6 @@
             this.textBoxNom = new System.Windows.Forms.TextBox();
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // textBoxCP
-            // 
-            this.textBoxCP.Location = new System.Drawing.Point(327, 198);
-            this.textBoxCP.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxCP.Name = "textBoxCP";
-            this.textBoxCP.Size = new System.Drawing.Size(218, 20);
-            this.textBoxCP.TabIndex = 20;
-            this.textBoxCP.TextChanged += new System.EventHandler(this.textBoxCP_TextChanged);
             // 
             // textBoxNumero
             // 
@@ -60,14 +49,14 @@
             this.textBoxNumero.TabIndex = 19;
             this.textBoxNumero.TextChanged += new System.EventHandler(this.textBoxNumero_TextChanged);
             // 
-            // textBoxEmail
+            // textBoxSexe
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(327, 141);
-            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(218, 20);
-            this.textBoxEmail.TabIndex = 18;
-            this.textBoxEmail.TextChanged += new System.EventHandler(this.textBoxEmail_TextChanged);
+            this.textBoxSexe.Location = new System.Drawing.Point(327, 141);
+            this.textBoxSexe.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSexe.Name = "textBoxSexe";
+            this.textBoxSexe.Size = new System.Drawing.Size(218, 20);
+            this.textBoxSexe.TabIndex = 18;
+            this.textBoxSexe.TextChanged += new System.EventHandler(this.textBoxEmail_TextChanged);
             // 
             // textBoxPrenom
             // 
@@ -77,17 +66,6 @@
             this.textBoxPrenom.Size = new System.Drawing.Size(218, 20);
             this.textBoxPrenom.TabIndex = 17;
             this.textBoxPrenom.TextChanged += new System.EventHandler(this.textBoxPrenom_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(113, 201);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(164, 17);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Code Postal + Adresse : ";
             // 
             // label4
             // 
@@ -107,9 +85,10 @@
             this.label3.Location = new System.Drawing.Point(113, 141);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 17);
+            this.label3.Size = new System.Drawing.Size(39, 17);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Email";
+            this.label3.Text = "Sexe";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -173,11 +152,9 @@
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.textBoxNom);
             this.Controls.Add(this.buttonValider);
-            this.Controls.Add(this.textBoxCP);
             this.Controls.Add(this.textBoxNumero);
-            this.Controls.Add(this.textBoxEmail);
+            this.Controls.Add(this.textBoxSexe);
             this.Controls.Add(this.textBoxPrenom);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -190,12 +167,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBoxCP;
         private System.Windows.Forms.TextBox textBoxNumero;
-        private System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.TextBox textBoxSexe;
         private System.Windows.Forms.TextBox textBoxPrenom;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
