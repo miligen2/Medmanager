@@ -17,12 +17,15 @@ namespace Medmanager
     {
 
         private Connection_DB connection = new Connection_DB();
+
+        private string posologie;
+        private decimal duree;
+        private string instruction;
         public AOrdonnance()
         {
             InitializeComponent();
             connection.Open();
             LoadPatients(); // Appel de la méthode pour charger les patients dans le ComboBox
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
         private void LoadPatients()
@@ -31,7 +34,8 @@ namespace Medmanager
             comboBox1.Items.Clear(); // Efface les éléments précédents du ComboBox
             foreach (Patient pat in patients)
             {
-                comboBox1.Items.Add(pat.Nom);
+                string patientInfos = $"{pat.Nom} {pat.Prenom} {pat.Sexe}";
+                comboBox1.Items.Add(patientInfos);
             }
         }
 
@@ -50,6 +54,13 @@ namespace Medmanager
 
         private void buttonValider_Click(object sender, EventArgs e)
         {
+            try
+            {
+                connection.InsertOrdonnance(posologie, duree, instruction);
+
+            }
+            catch { 
+            }
 /*            try
             {
                 if (dataGridView1.SelectedRows.Count > 0)
@@ -91,6 +102,21 @@ namespace Medmanager
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            posologie= textBox1.Text;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            instruction= textBox2.Text;
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            duree = numericUpDown1.Value;
         }
     }
 }

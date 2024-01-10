@@ -104,18 +104,6 @@
     <Compile Include="Ajouter Ordonnance\AOrdonnance.Designer.cs">
       <DependentUpon>AOrdonnance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ajouter Ordonnance\FormConsultation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Ajouter Ordonnance\FormConsultation.Designer.cs">
-      <DependentUpon>FormConsultation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Ajouter Ordonnance\LConsultation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Ajouter Ordonnance\LConsultation.Designer.cs">
-      <DependentUpon>LConsultation.cs</DependentUpon>
-    </Compile>
     <Compile Include="Ajouter medicament\LMedicament.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,30 +142,33 @@
     </Compile>
     <Compile Include="Connection_DB.cs" />
     <Compile Include="DrugDataAcces.cs" />
-    <Compile Include="model\Drug.cs" />
-    <Compile Include="Ajouter medicament\FormDetails.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Ajouter medicament\FormDetails.Designer.cs">
-      <DependentUpon>FormDetails.cs</DependentUpon>
-    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="model\allergie.cs" />
+    <Compile Include="model\Antecedent.cs" />
+    <Compile Include="model\medecin.cs" />
+    <Compile Include="model\Medicament.cs" />
+    <Compile Include="Ajouter medicament\FormDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajouter medicament\FormDetails.Designer.cs">
+      <DependentUpon>FormDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="model\Patient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Ajouter Ordonnance\AOrdonnance.resx">
       <DependentUpon>AOrdonnance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Ajouter Ordonnance\FormConsultation.resx">
-      <DependentUpon>FormConsultation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Ajouter Ordonnance\LConsultation.resx">
-      <DependentUpon>LConsultation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ajouter medicament\AMedicament.resx">
       <DependentUpon>AMedicament.cs</DependentUpon>
@@ -202,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

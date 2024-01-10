@@ -1,4 +1,4 @@
-﻿using Medmanager.Ajouter_Consultation;
+﻿
 using Medmanager.model;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
@@ -55,26 +55,61 @@ namespace Medmanager
             conn.Close();
             Console.WriteLine("Connexion à la base de données MySQL fermée.");
         }
+        // connexion
 
+        public bool Connexion(string login, string password)
+        {
+            try
+            {
+                conn.Open();
+                string query = "SELECT login, password FROM medecin WHERE login = @login";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@login", login);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string dbLogin = reader.GetString("login");
+                        string dbPassword = reader.GetString("password");
+
+                        if (password == dbPassword)
+                        {
+                            // Connexion réussie
+                            Console.WriteLine("Connexion réussie !");
+                            return true;
+                        }
+                        else
+                        {
+                            // Mot de passe incorrect
+                            Console.WriteLine("Mot de passe incorrect !");
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        // Aucun enregistrement trouvé
+                        Console.WriteLine("Utilisateur non trouvé !");
+                        return false;
+                    }
+                }
+
+        
+           
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur de connexion : " + ex.Message);
+                return false;
+            }
+        }
+
+
+        //
 
 
 
         // main =
-        public int GetNumberOfConsultations()
-        {
-            try
-            {
-                string query = "SELECT COUNT(*) FROM consultations";
-                MySqlCommand command = new MySqlCommand(query, conn);
-                int numberOfConsultations = Convert.ToInt32(command.ExecuteScalar());
-                return numberOfConsultations;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Erreur lors de la récupération du nombre de consultations : " + ex.Message);
-                return 0; // Return 0 in case of an error
-            }
-        }
 
         public int GetNumberOfPatients()
         {
@@ -93,7 +128,35 @@ namespace Medmanager
         }
 
         //fin main 
+        //antécédent
+        public List<Antecedent> GetAntecedent()
+        {
+            List<Antecedent> antecedents = new List<Antecedent>();
+            try
+            {
+                string query = "SELECT nom FROM antecedent ORDER BY nom";
+                MySqlCommand command = new MySqlCommand( query, conn);
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string nom = reader.GetString(0);
+                    Antecedent antecedent = new Antecedent(nom);
+                    antecedents.Add(antecedent);
+                }
+                reader.Close();
 
+
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+
+            }
+            return antecedents;
+
+        }
+
+        // fin
         //patient 
         public void InsertDataPatient(string nom, string prenom, string sexe, string numero)
         {
@@ -115,6 +178,7 @@ namespace Medmanager
             {
                 Console.WriteLine("Erreur lors de l'insertion des données : " + ex.Message);
             }
+
         }
         public List<Patient> GetPatientsFromDatabase()
         {
@@ -122,7 +186,7 @@ namespace Medmanager
 
             try
             {
-                string query = "SELECT nom, prenom, sexe, numero FROM patient";
+                string query = "SELECT nom, prenom, sexe, numero FROM patient ORDER BY nom";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 MySqlDataReader reader = command.ExecuteReader();
 
@@ -171,10 +235,7 @@ namespace Medmanager
         {
             try
             {
-                // Écrivez ici le code pour supprimer le patient de la base de données en utilisant l'ID
-                // Assurez-vous de prendre des précautions pour éviter les problèmes de suppression (comme la vérification des dépendances).
-
-                string query = "DELETE FROM patient WHERE id = @patientID";
+                string query = "DELETE FROM patient WHERE id_patient = @patientID";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -197,7 +258,7 @@ namespace Medmanager
         {
             try
             {
-                string query = "UPDATE patient SET nom = @newNom, prenom = @newPrenom, sexe= @newSexe,  numero = @newNumero, WHERE id_patient = @patientID";
+                string query = "UPDATE patient SET nom = @newNom, prenom = @newPrenom, sexe= @newSexe,  numero = @newNumero WHERE id_patient = @patientID";
 
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@newNom", newNom);
@@ -217,18 +278,15 @@ namespace Medmanager
         }
         //fin patient 
 
-        public void InsertDataMedicament(string nom, string description, string famille, int quantite, decimal prix)
+        public void InsertDataMedicament(string nom, string indication)
         {
             try
             {
-                string query = "INSERT INTO medicaments (nom, description,famille, quantite, prix) VALUES (@nom, @description, @famille, @quantite, @prix)";
+                string query = "INSERT INTO medicament (nom, contre_indiction) VALUES (@nom, @indication)";
 
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@nom", nom);
-                command.Parameters.AddWithValue("@description", description);
-                command.Parameters.AddWithValue("@famille", famille);
-                command.Parameters.AddWithValue("@quantite", quantite);
-                command.Parameters.AddWithValue("@prix", prix);
+                command.Parameters.AddWithValue("@indication", indication);
 
                 int rowsAffected = command.ExecuteNonQuery();
 
@@ -240,13 +298,13 @@ namespace Medmanager
             }
         }
 
-        public List<Drug> ReadMedicament(DataGridView dataGridView)
+        public List<Medicament> ReadMedicament(DataGridView dataGridView)
         {
-            List<Drug> medicamentList = new List<Drug>();
+            List<Medicament> medicamentList = new List<Medicament>();
 
             try
             {
-                string query = "SELECT id, nom, description, famille, quantite, prix FROM medicaments";
+                string query = "SELECT id, nom, contre_indiction FROM medicament";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 MySqlDataReader reader = command.ExecuteReader();
                 DataTable table = new DataTable();
@@ -261,18 +319,15 @@ namespace Medmanager
             return medicamentList;
         }
 
-        public void UpdateMedicament(int medicamentID, string newNom, string newDescription,string newFamille, int newQuantite, decimal newPrix)
+        public void UpdateMedicament(int medicamentID, string newNom, string newIndication)
         {
             try
             {
-                string query = "UPDATE medicaments SET nom = @newNom, description = @newDescription, famille = @newFamille, quantite = @newQuantite, prix = @newPrix WHERE id = @medicamentID";
+                string query = "UPDATE medicament SET nom = @newNom, contre_indiction = @newIndication WHERE id = @medicamentID";
 
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@newNom", newNom);
-                command.Parameters.AddWithValue("@newDescription", newDescription);
-                command.Parameters.AddWithValue("@newFamille", newFamille);
-                command.Parameters.AddWithValue("@newQuantite", newQuantite);
-                command.Parameters.AddWithValue("@newPrix", newPrix);
+                command.Parameters.AddWithValue("@newIndication", newIndication);
                 command.Parameters.AddWithValue("@medicamentID", medicamentID);
 
                 int rowsAffected = command.ExecuteNonQuery();
@@ -288,7 +343,7 @@ namespace Medmanager
         {
             try
             {
-                string query = "DELETE FROM medicaments WHERE id = @medicamentID";
+                string query = "DELETE FROM medicament WHERE id = @medicamentID";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -364,7 +419,11 @@ namespace Medmanager
             return families;
         }
 
-            public void InsertDataConsultation(int clientId, string typeConsultation, DateTime dateConsultation, string commentaire)
+            
+
+
+
+        public void InsertOrdonnance(string po,decimal duree,string ins)
         {
             try
             {
@@ -372,60 +431,24 @@ namespace Medmanager
                 {
                     connection.Open();
 
-                    // Construire votre commande SQL d'insertion
-                    string query = "INSERT INTO consultations (clientId, typeConsultation, dateConsultation, commentaire) " +
-                                   "VALUES (@clientId, @typeConsultation, @dateConsultation, @commentaire)";
-
+                    string query = "INSERT INTO ordonnance (posologie,duree_traitement,instruction_specifique) VALUES (@posologie,@duree,@instruction) ";
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
-                        cmd.Parameters.AddWithValue("@clientId", clientId);
-                        cmd.Parameters.AddWithValue("@typeConsultation", typeConsultation);
-                        cmd.Parameters.AddWithValue("@dateConsultation", dateConsultation);
-                        cmd.Parameters.AddWithValue("@commentaire", commentaire);
-
+                        cmd.Parameters.AddWithValue("@posologie", po);
+                        cmd.Parameters.AddWithValue("@duree", duree);
+                        cmd.Parameters.AddWithValue("@instruction", ins);
+                        
                         cmd.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Gérer l'exception (enregistrez dans un fichier journal, affichez un message d'erreur, etc.)
-                throw new Exception("Erreur lors de l'insertion des données de consultation : " + ex.Message);
-            }
-        }
 
-        public void UpdateConsultation(int consultationID, string newTypeConsultation, string newCommentaire, DateTime newDateConsultation)
-        {
-            try
-            {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    // Mettre à jour les informations de la consultation
-                    string queryConsultation = "UPDATE consultations SET typeConsultation = @typeConsultation, " +
-                                               "dateConsultation = @dateConsultation, commentaire = @commentaire " +
-                                               "WHERE id = @consultationId";
-
-                    using (MySqlCommand cmdConsultation = new MySqlCommand(queryConsultation, connection))
-                    {
-                        cmdConsultation.Parameters.AddWithValue("@typeConsultation", newTypeConsultation);
-                        cmdConsultation.Parameters.AddWithValue("@dateConsultation", newDateConsultation);
-                        cmdConsultation.Parameters.AddWithValue("@commentaire", newCommentaire);
-                        cmdConsultation.Parameters.AddWithValue("@consultationId", consultationID);
-
-                        cmdConsultation.ExecuteNonQuery();
                     }
 
                 }
             }
             catch (Exception ex)
             {
-                // Gérer l'exception
-                throw new Exception("Erreur lors de la mise à jour de la consultation : " + ex.Message);
+                Console.WriteLine("Erreur lors de l'insertion des données : " + ex.Message);
             }
         }
-
 
 
         public void ReadConsultationsWithPatients(DataGridView dataGridView)

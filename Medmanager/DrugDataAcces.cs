@@ -9,16 +9,16 @@ namespace Medmanager
     internal class DrugDataAcces
         
     {
-        private List<Drug> drugs = new List<Drug>();
-        public void addDrug(Drug drug)
+        private List<Medicament> drugs = new List<Medicament>();
+        public void addDrug(Medicament drug)
         {
             this.drugs.Add(drug);
         }
-        public void deleteDrug(Drug drug)
+        public void deleteDrug(Medicament drug)
         {
             this.drugs.Remove(drug);
         }
         
-        public List<Drug> getDrugList() {  return this.drugs; }
+        public List<Medicament> getDrugList() {  return this.drugs; }
     }
 }

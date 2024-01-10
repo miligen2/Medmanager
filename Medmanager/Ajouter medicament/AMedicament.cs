@@ -1,4 +1,5 @@
-﻿using Microsoft.SqlServer.Server;
+﻿using Medmanager.model;
+using Microsoft.SqlServer.Server;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -15,42 +16,45 @@ namespace Medmanager
 {
     public partial class AMedicament : Form
     {
-        Connection_DB connection = new Connection_DB();
+        private Connection_DB connection = new Connection_DB();
 
         public AMedicament()
         {
             InitializeComponent();
+            connection.Open();
+            LoadAntecedent();
+        }
+        private void LoadAntecedent()
+        {
+            List<Antecedent> antecedents = connection.GetAntecedent();
+            comboBox1.Items.Clear();
+            foreach (Antecedent ant in antecedents)
+            {
+                comboBox1.Items.Add(ant.Name);
+            }
+            connection.GetAntecedent();
         }
 
 
         private void buttonValider_Click(object sender, EventArgs e)
         {
 
-            if (textBox1.Text.Length == 0 || textBox2.Text.Length == 0)
+            if (textBox1.Text.Length == 0 || comboBox1.Text.Length == 0)
             {
-                MessageBox.Show("Veuillez remplir les champs");
+                MessageBox.Show("Veuillez remplir tous les champs");
                 return;
             }
 
             string nom = textBox1.Text;
-            string description = textBox2.Text;
-            string famille = textBox3.Text;
-            int quantite = (int)numericUpDown1.Value;
-            decimal prix = numericUpDown2.Value;
+            string indication = comboBox1.Text;
 
-           
-            if (connection.Open())
-            {
+            connection.InsertDataMedicament(nom, indication);
+            connection.Close();
+            
 
-                connection.InsertDataMedicament(nom, description, famille, quantite, prix);
 
-                connection.Close();
-            }
-
-     
 
             textBox1.Text = string.Empty;
-            textBox2.Text = string.Empty;
 
 
 
@@ -62,47 +66,14 @@ namespace Medmanager
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
     
         }
 
-        private void buttonAnnuler_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged_1(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

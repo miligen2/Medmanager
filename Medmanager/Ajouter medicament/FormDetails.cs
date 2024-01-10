@@ -14,38 +14,33 @@ namespace Medmanager
     public partial class FormDetails : Form
     {
         private int medicamentID;
+
         private Connection_DB conn = new Connection_DB();
 
         public void InitializeForm(DataGridViewRow selectedRow)
         {
             // Initialisez les contrôles avec les données de la ligne sélectionnée
             textBox1.Text = selectedRow.Cells["nom"].Value.ToString();
-            textBox2.Text = selectedRow.Cells["description"].Value.ToString();
-            textBoxFamille.Text = selectedRow.Cells["famille"].Value.ToString();
-            numericUpDownQuantité.Value = Convert.ToDecimal(selectedRow.Cells["quantite"].Value);
-            numericUpDownPrix.Value = Convert.ToDecimal(selectedRow.Cells["prix"].Value);
+            comboBox1.Text = selectedRow.Cells["contre_indiction"].Value.ToString();
 
             medicamentID = Convert.ToInt32(selectedRow.Cells["id"].Value);
-
-            if ((int)numericUpDownQuantité.Value == 0)
-            {
-                // Affichez la ligne en rouge
-                numericUpDownQuantité.BackColor = Color.Red;
-            }
         }
         public FormDetails()
         {
             InitializeComponent();
             conn.Open();
+            LoadAntecedent();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        public void LoadAntecedent()
         {
+            List<Antecedent> antecedents = conn.GetAntecedent();
+            comboBox1.Items.Clear();
+            foreach(Antecedent ant in antecedents)
+            {
+                comboBox1.Items.Add(ant.Name);
+            }
 
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -55,13 +50,10 @@ namespace Medmanager
             {
                 // Récupérez les valeurs modifiées
                 string newNom = textBox1.Text;
-                string newDescription = textBox2.Text;
-                string newFamille = textBoxFamille.Text;
-                int newQuantite = (int)numericUpDownQuantité.Value;
-                decimal newPrix = numericUpDownPrix.Value;
+                string newIndication = comboBox1.Text;
 
                 // Appelez la méthode UpdateMedicament pour effectuer la mise à jour
-                conn.UpdateMedicament(medicamentID, newNom, newDescription,newFamille, newQuantite, newPrix);
+                conn.UpdateMedicament(medicamentID, newNom, newIndication);
 
                 // Fermez le formulaire après la mise à jour
                 this.Close();
@@ -70,28 +62,6 @@ namespace Medmanager
             {
                 MessageBox.Show("Erreur lors de la mise à jour des données : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-
-
-        private void numericUpDownQuantité_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDownPrix_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void suppr_Click(object sender, EventArgs e)
@@ -104,8 +74,12 @@ namespace Medmanager
         {
 
         }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
-        private void textBoxFamille_TextChanged(object sender, EventArgs e)
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
