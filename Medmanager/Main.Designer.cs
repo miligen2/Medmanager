@@ -49,7 +49,6 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.ImageKey = "(aucun)";
             this.button1.Location = new System.Drawing.Point(582, 351);
@@ -123,9 +122,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(581, 125);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(152, 15);
+            this.label4.Size = new System.Drawing.Size(147, 15);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Vous avez déja un compte ?";
+            this.label4.Text = "Vous avez pas de compte ?";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
@@ -161,6 +160,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Consolas", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(101, 228);
             this.label2.Name = "label2";
