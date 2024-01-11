@@ -136,6 +136,12 @@
     <Compile Include="Ajouter patient\CPatient.Designer.cs">
       <DependentUpon>CPatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ajouter patient\AjoutAntePatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajouter patient\AjoutAntePatient.Designer.cs">
+      <DependentUpon>AjoutAntePatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ajouter patient\FormModifier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,12 @@
     </Compile>
     <Compile Include="Connection_DB.cs" />
     <Compile Include="DrugDataAcces.cs" />
+    <Compile Include="Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +202,9 @@
     <EmbeddedResource Include="Ajouter patient\CPatient.resx">
       <DependentUpon>CPatient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ajouter patient\AjoutAntePatient.resx">
+      <DependentUpon>AjoutAntePatient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ajouter patient\FormModifier.resx">
       <DependentUpon>FormModifier.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +223,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

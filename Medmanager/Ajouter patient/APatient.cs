@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medmanager.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,17 @@ namespace Medmanager
 {
     public partial class APatient : Form
     {
+
+        private Connection_DB conn = new Connection_DB();
         public APatient()
         {
             InitializeComponent();
+            conn.Open();
+
+       
         }
+
+
 
         private string nom;
         private string prenom;
@@ -42,15 +50,7 @@ namespace Medmanager
 
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
+  
 
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -73,20 +73,12 @@ namespace Medmanager
             numero = textBox4.Text;
         }
 
-
-
         private void buttonValider_Click_1(object sender, EventArgs e)
         {
-            Connection_DB connection = new Connection_DB();
-
-            if (connection.Open())
-            {
-
-                connection.InsertDataPatient(nom, prenom, sexe, numero);
+                conn.InsertDataPatient(nom, prenom, sexe, numero);
                 Console.WriteLine("valeur ajouté avec succés");
-
-                connection.Close();
-            }
         }
+
+
     }
 }

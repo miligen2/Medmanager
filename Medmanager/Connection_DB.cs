@@ -93,9 +93,6 @@ namespace Medmanager
                         return false;
                     }
                 }
-
-        
-           
             }
             catch (Exception ex)
             {
@@ -104,18 +101,13 @@ namespace Medmanager
             }
         }
 
-
-        //
-
-
-
         // main =
 
         public int GetNumberOfPatients()
         {
             try
             {
-                string query = "SELECT COUNT(*) FROM clients";
+                string query = "SELECT COUNT(*) FROM patient";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 int numberOfPatients = Convert.ToInt32(command.ExecuteScalar());
                 return numberOfPatients;
@@ -134,13 +126,14 @@ namespace Medmanager
             List<Antecedent> antecedents = new List<Antecedent>();
             try
             {
-                string query = "SELECT nom FROM antecedent ORDER BY nom";
+                string query = "SELECT id, nom FROM antecedent ORDER BY nom";
                 MySqlCommand command = new MySqlCommand( query, conn);
                 MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    string nom = reader.GetString(0);
-                    Antecedent antecedent = new Antecedent(nom);
+                    int id = reader.GetInt32(0);
+                    string nom = reader.GetString(1);
+                    Antecedent antecedent = new Antecedent(id, nom);
                     antecedents.Add(antecedent);
                 }
                 reader.Close();
@@ -154,6 +147,25 @@ namespace Medmanager
             }
             return antecedents;
 
+        }
+
+        public void InsertAntecedentInpatient(int idP, int idA)
+        {
+            try
+            {
+                string query = "INSERT INTO a_eu (id, id_patient) VALUES (@idA, @idP)";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@idA", idA);
+                command.Parameters.AddWithValue("@idP", idP);
+
+
+                Console.WriteLine("Antécédent : " + idA + " Ajouté à : " + idP);
+
+
+            }catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors de l'insertion: " + ex.Message);
+            }
         }
 
         // fin
@@ -186,18 +198,19 @@ namespace Medmanager
 
             try
             {
-                string query = "SELECT nom, prenom, sexe, numero FROM patient ORDER BY nom";
+                string query = "SELECT id_patient, nom, prenom, sexe, numero FROM patient ORDER BY nom";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 MySqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    string nom = reader.GetString(0);
-                    string prenom = reader.GetString(1);
-                    string sexe = reader.GetString(2);
-                    string numero = reader.GetString(3);
+                    int id = reader.GetInt32(0);
+                    string nom = reader.GetString(1);
+                    string prenom = reader.GetString(2);
+                    string sexe = reader.GetString(3);
+                    string numero = reader.GetString(4);
 
-                    Patient patient = new Patient(nom,prenom,sexe,numero);
+                    Patient patient = new Patient(id,nom,prenom,sexe,numero);
                     patients.Add(patient);
                 }
 

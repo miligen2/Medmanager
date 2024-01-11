@@ -125,7 +125,7 @@
             // buttonValider
             // 
             this.buttonValider.BackColor = System.Drawing.Color.SeaGreen;
-            this.buttonValider.Location = new System.Drawing.Point(273, 274);
+            this.buttonValider.Location = new System.Drawing.Point(336, 271);
             this.buttonValider.Margin = new System.Windows.Forms.Padding(2);
             this.buttonValider.Name = "buttonValider";
             this.buttonValider.Size = new System.Drawing.Size(76, 37);
@@ -138,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(613, 386);
             this.Controls.Add(this.buttonValider);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);

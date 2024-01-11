@@ -99,5 +99,11 @@ namespace Medmanager
             AOrdonnance aOrdonnance = new AOrdonnance();
             aOrdonnance.Show();
         }
+
+        private void ajouterUnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AjoutAntePatient ajoutAntePatient = new AjoutAntePatient();
+            ajoutAntePatient.Show();
+        }
     }
 }

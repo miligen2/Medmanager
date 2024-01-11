@@ -33,7 +33,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.medicamentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultationMédicamentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.medicamentParFamilleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajoutMédicamentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.patientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consulterPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,11 +42,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.ajouterUnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -68,9 +68,9 @@
             // medicamentsToolStripMenuItem
             // 
             this.medicamentsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.consultationMédicamentToolStripMenuItem,
-            this.medicamentParFamilleToolStripMenuItem,
-            this.ajoutMédicamentsToolStripMenuItem});
+            this.ajoutMédicamentsToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.consultationMédicamentToolStripMenuItem});
             this.medicamentsToolStripMenuItem.Name = "medicamentsToolStripMenuItem";
             this.medicamentsToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.medicamentsToolStripMenuItem.Text = "Medicaments";
@@ -82,13 +82,6 @@
             this.consultationMédicamentToolStripMenuItem.Text = "Consultation / modification Médicament";
             this.consultationMédicamentToolStripMenuItem.Click += new System.EventHandler(this.consultationMédicamentToolStripMenuItem_Click);
             // 
-            // medicamentParFamilleToolStripMenuItem
-            // 
-            this.medicamentParFamilleToolStripMenuItem.Name = "medicamentParFamilleToolStripMenuItem";
-            this.medicamentParFamilleToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
-            this.medicamentParFamilleToolStripMenuItem.Text = "Medicament par Famille";
-            this.medicamentParFamilleToolStripMenuItem.Click += new System.EventHandler(this.medicamentParFamilleToolStripMenuItem_Click);
-            // 
             // ajoutMédicamentsToolStripMenuItem
             // 
             this.ajoutMédicamentsToolStripMenuItem.Name = "ajoutMédicamentsToolStripMenuItem";
@@ -99,8 +92,10 @@
             // patientToolStripMenuItem
             // 
             this.patientToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ajouterPatientToolStripMenuItem,
+            this.toolStripSeparator1,
             this.consulterPatientToolStripMenuItem,
-            this.ajouterPatientToolStripMenuItem});
+            this.ajouterUnToolStripMenuItem});
             this.patientToolStripMenuItem.Name = "patientToolStripMenuItem";
             this.patientToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.patientToolStripMenuItem.Text = "Patient";
@@ -122,7 +117,8 @@
             // consultationToolStripMenuItem
             // 
             this.consultationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.créerUneOrdonnanceToolStripMenuItem});
+            this.créerUneOrdonnanceToolStripMenuItem,
+            this.toolStripSeparator2});
             this.consultationToolStripMenuItem.Name = "consultationToolStripMenuItem";
             this.consultationToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.consultationToolStripMenuItem.Text = "Ordonnance";
@@ -152,7 +148,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(178, 390);
+            this.label3.Location = new System.Drawing.Point(12, 514);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(152, 20);
             this.label3.TabIndex = 3;
@@ -170,27 +166,27 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // label4
+            // toolStripSeparator1
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(178, 337);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(183, 20);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "nombre de consultation :";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(255, 6);
             // 
-            // pictureBox2
+            // toolStripSeparator2
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(-427, -37);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(841, 595);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(191, 6);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(288, 6);
+            // 
+            // ajouterUnToolStripMenuItem
+            // 
+            this.ajouterUnToolStripMenuItem.Name = "ajouterUnToolStripMenuItem";
+            this.ajouterUnToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.ajouterUnToolStripMenuItem.Text = "Ajouter un antécédent à un patient";
+            this.ajouterUnToolStripMenuItem.Click += new System.EventHandler(this.ajouterUnToolStripMenuItem_Click);
             // 
             // MainMenu
             // 
@@ -199,12 +195,10 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(795, 558);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.pictureBox2);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainMenu";
@@ -213,7 +207,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,7 +218,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem medicamentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultationMédicamentToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem medicamentParFamilleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajoutMédicamentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem patientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consulterPatientToolStripMenuItem;
@@ -234,9 +226,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripMenuItem créerUneOrdonnanceToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem ajouterUnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 
