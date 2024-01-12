@@ -18,8 +18,10 @@ namespace Medmanager.Ajouter_patient
 
         public CPatient()
         {
+
             InitializeComponent();
-            connection.Open();
+            connection.Open();  
+        
             LoadPatients();
         }
         private void CPatient_Load(object sender, EventArgs e)

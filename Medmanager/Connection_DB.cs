@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
 using MySqlX.XDevAPI.Relational;
 using Org.BouncyCastle.Asn1.BC;
+using Org.BouncyCastle.Crypto;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 
 namespace Medmanager
@@ -61,7 +63,7 @@ namespace Medmanager
         {
             try
             {
-                conn.Open();
+
                 string query = "SELECT login, password FROM medecin WHERE login = @login";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@login", login);
@@ -115,7 +117,7 @@ namespace Medmanager
             catch (Exception ex)
             {
                 Console.WriteLine("Erreur lors de la récupération du nombre de patients : " + ex.Message);
-                return 0; // Return 0 in case of an error
+                return 0; 
             }
         }
 
@@ -126,7 +128,7 @@ namespace Medmanager
             List<Antecedent> antecedents = new List<Antecedent>();
             try
             {
-                string query = "SELECT id, nom FROM antecedent ORDER BY nom";
+                string query = "SELECT id_antecedent, nom FROM antecedent ORDER BY nom";
                 MySqlCommand command = new MySqlCommand( query, conn);
                 MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -158,6 +160,8 @@ namespace Medmanager
                 command.Parameters.AddWithValue("@idA", idA);
                 command.Parameters.AddWithValue("@idP", idP);
 
+                command.ExecuteNonQuery();
+
 
                 Console.WriteLine("Antécédent : " + idA + " Ajouté à : " + idP);
 
@@ -169,6 +173,50 @@ namespace Medmanager
         }
 
         // fin
+
+        // allergie
+        public List<Allergie> GetAllergies()
+        {
+            List<Allergie> allergies = new List<Allergie>();    
+            try
+            {
+                string query = "SELECT * FROM allergies ORDER BY nom";
+                MySqlCommand command = new MySqlCommand(query,conn);
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    string nom = reader.GetString(1);
+                    Allergie allergie = new Allergie(id, nom);
+                    allergies.Add(allergie);
+                }
+                reader.Close();
+
+            } 
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return allergies;
+        }
+        public void InsertAllergiesIntoPatient(int idallergies, int idpatient)
+        {
+            try
+            {
+                string query = "INSERT INTO est (id_allergie,id_patient) VALUES (@idallergies,@idpatient)";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@idallergies", idallergies);
+                command.Parameters.AddWithValue("@idpatient", idpatient);
+                command.ExecuteNonQuery();
+
+                Console.WriteLine("allergies : " + idallergies + " Ajouté à : " + idpatient);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors de l'insertion des données : " + ex.Message);
+            }
+        }
         //patient 
         public void InsertDataPatient(string nom, string prenom, string sexe, string numero)
         {
@@ -464,40 +512,63 @@ namespace Medmanager
         }
 
 
-        public void ReadConsultationsWithPatients(DataGridView dataGridView)
+        // medecin
+
+        public string GetNomFromId(int id)
         {
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                string query = "SELECT nom, prenom FROM medecin WHERE id = @id";
+                using(MySqlCommand command = new MySqlCommand(query,conn))
                 {
-                    connection.Open();
+                    command.Parameters.AddWithValue("@id", id);
 
-                    // Construire votre commande SQL avec une jointure entre les tables
-                    string query = "SELECT consultations.id, clients.nom, clients.prenom, " +
-                                   "consultations.typeConsultation, consultations.dateConsultation, consultations.commentaire " +
-                                   "FROM consultations " +
-                                   "INNER JOIN clients ON consultations.clientId = clients.id";
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        if (reader.Read())
                         {
-                            DataTable dataTable = new DataTable();
-                            adapter.Fill(dataTable);
-
-                            // Associer les données à la dataGridView
-                            dataGridView.DataSource = dataTable;
+                            string nom = reader["nom"].ToString();
+                            string prenom = reader["prenom"].ToString();
+                            return $"{nom} {prenom}";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Gérer l'exception
-                throw new Exception("Erreur lors de la lecture des consultations : " + ex.Message);
+                Console.WriteLine(ex.Message);
             }
+            return "Error user ";
         }
 
+        public int GetMedecinId(string login)
+        {
+            try
+            {
+                string query = "SELECT id FROM medecin WHERE login = @login";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@login", login);
+
+                // Utiliser ExecuteScalar pour obtenir la valeur de la première colonne de la première ligne
+                object result = command.ExecuteScalar();
+
+                // Convertir le résultat en int
+                if (result != null)
+                {
+                    return Convert.ToInt32(result);
+                }
+                else
+                {
+                    // Gérer le cas où le résultat est null
+                    return 0; // Vous pouvez ajuster le type de retour en conséquence
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return 0; // Vous pouvez ajuster le type de retour en conséquence
+            }
+        }
 
 
 

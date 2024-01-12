@@ -21,7 +21,7 @@ namespace Medmanager
         public AMedicament()
         {
             InitializeComponent();
-            connection.Open();
+            connection.Open(); 
             LoadAntecedent();
         }
         private void LoadAntecedent()
@@ -49,13 +49,9 @@ namespace Medmanager
             string indication = comboBox1.Text;
 
             connection.InsertDataMedicament(nom, indication);
-            connection.Close();
-            
-
 
 
             textBox1.Text = string.Empty;
-
 
 
         }

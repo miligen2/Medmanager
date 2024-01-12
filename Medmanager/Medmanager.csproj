@@ -142,6 +142,12 @@
     <Compile Include="Ajouter patient\AjoutAntePatient.Designer.cs">
       <DependentUpon>AjoutAntePatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ajouter patient\AjoutAllergiesPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajouter patient\AjoutAllergiesPatient.Designer.cs">
+      <DependentUpon>AjoutAllergiesPatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ajouter patient\FormModifier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,9 +168,9 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="model\allergie.cs" />
+    <Compile Include="model\Allergie.cs" />
     <Compile Include="model\Antecedent.cs" />
-    <Compile Include="model\medecin.cs" />
+    <Compile Include="model\Medecin.cs" />
     <Compile Include="model\Medicament.cs" />
     <Compile Include="Ajouter medicament\FormDetails.cs">
       <SubType>Form</SubType>
@@ -192,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ajouter medicament\RechercheMedicament.resx">
       <DependentUpon>RechercheMedicament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ajouter patient\AjoutAllergiesPatient.resx">
+      <DependentUpon>AjoutAllergiesPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ajouter patient\APatient.resx">
       <DependentUpon>APatient.cs</DependentUpon>

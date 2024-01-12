@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medmanager.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,16 +9,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Medmanager
 {
     public partial class Main : Form
     {
-        string login, password;
+
+        public int MedecinId { get; private set; }
+        
+        private string login; 
+        private string password;
         private Connection_DB conn = new Connection_DB();
         public Main()
         {
             InitializeComponent();
+            conn.Open();
  
+        }
+
+        private void loadIDmedecin()
+        {
+         MedecinId = conn.GetMedecinId(login);
+
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -71,7 +84,10 @@ namespace Medmanager
 
         }
 
-    
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -79,7 +95,8 @@ namespace Medmanager
             {
                 if (conn.Connexion(login,password)) 
                 {
-                    MainMenu mainMenu = new MainMenu();
+                    loadIDmedecin();
+                    MainMenu mainMenu = new MainMenu(MedecinId);
                     mainMenu.Show(this);
                     this.Hide();
                 }

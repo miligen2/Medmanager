@@ -11,19 +11,31 @@ using System.Windows.Forms;
 
 namespace Medmanager.Ajouter_patient
 {
-    public partial class AjoutAntePatient : Form
+    public partial class AjoutAllergiesPatient : Form
     {
         private Connection_DB conn = new Connection_DB();
-        public AjoutAntePatient()
+
+        private int idPatient;
+        private int idAllergies;
+
+        public AjoutAllergiesPatient()
         {
             InitializeComponent();
             conn.Open();
+
             LoadPatient();
-            LoadAntecent();
-            
+            LoadAllergie();
         }
-        private int idPatient;
-        private int idAntecedent;
+        private void LoadAllergie()
+        {
+            List<Allergie> allergies = conn.GetAllergies();
+            comboBox2.Items.Clear();
+            foreach (Allergie allergie in allergies)
+            {
+                comboBox2.Items.Add(allergie.Name);
+            }
+
+        }
         private void LoadPatient()
         {
             List<Patient> pat = conn.GetPatientsFromDatabase();
@@ -35,28 +47,24 @@ namespace Medmanager.Ajouter_patient
             }
 
         }
-        private void LoadAntecent()
-        {
-            List<Antecedent> antecedents = conn.GetAntecedent();
-            comboBox2.Items.Clear();
-            foreach (Antecedent antecedent in antecedents)
-            {
-                comboBox2.Items.Add(antecedent.Name);
-            }
-        }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
+            
+
+        }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox2.SelectedIndex >= 0)
+            if (comboBox2.SelectedIndex >= 0 && comboBox2.SelectedIndex < conn.GetAllergies().Count)
             {
-                idAntecedent = conn.GetAntecedent()[comboBox2.SelectedIndex].id;
+                idAllergies = conn.GetAllergies()[comboBox2.SelectedIndex].id;
             }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex >= 0)
+            if (comboBox1.SelectedIndex >= 0 && comboBox1.SelectedIndex < conn.GetPatientsFromDatabase().Count)
             {
                 idPatient = conn.GetPatientsFromDatabase()[comboBox1.SelectedIndex].id;
             }
@@ -66,21 +74,11 @@ namespace Medmanager.Ajouter_patient
 
         private void button1_Click(object sender, EventArgs e)
         {
-            conn.InsertAntecedentInpatient(idPatient, idAntecedent);
+            conn.InsertAllergiesIntoPatient(idAllergies, idPatient);
             comboBox2.ResetText();
         }
 
-        private void AjoutAntePatient_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
+        private void AjoutAllergiesPatient_Load(object sender, EventArgs e)
         {
 
         }

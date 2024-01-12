@@ -100,5 +100,10 @@ namespace Medmanager.Ajouter_patient
         {
 
         }
+
+        private void FormModifier_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

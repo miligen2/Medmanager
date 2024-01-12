@@ -20,7 +20,6 @@ namespace Medmanager
             InitializeComponent();
             conn.Open();
 
-       
         }
 
 

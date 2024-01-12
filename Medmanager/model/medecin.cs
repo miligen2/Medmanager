@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace Medmanager.model
 {
-    internal class medecin
+    internal class Medecin
     {
-        public string prenom
-        {
-            get; set;
-        }
+        public int id;
+        public string prenom { get; set;}
         public string nom {  get; set; }
         public DateTime dateAnniversaire { get; set; }
 
-        public medecin(string prenom,string nom, DateTime anniversaire)
+        public Medecin(int id ,string prenom,string nom, DateTime anniversaire)
         {
+            this.id = id;
             this.prenom = prenom;
             this.nom = nom;
             this.dateAnniversaire = anniversaire;

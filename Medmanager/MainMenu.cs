@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Medmanager.Ajouter_medicament;
 using Medmanager.Ajouter_patient;
+using Medmanager.model;
 using MySql.Data.MySqlClient;
 
 
@@ -19,11 +20,12 @@ namespace Medmanager
 {
     public partial class MainMenu : Form
     {
-        public MainMenu()
+        private int medecinId;
+        public MainMenu(int medecinId)
         {
             InitializeComponent();
 
-      
+            this.medecinId = medecinId;
             Connection_DB connection = new Connection_DB();
             connection.Open();
 
@@ -96,7 +98,7 @@ namespace Medmanager
 
         private void créerUneOrdonnanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AOrdonnance aOrdonnance = new AOrdonnance();
+            AOrdonnance aOrdonnance = new AOrdonnance(medecinId);
             aOrdonnance.Show();
         }
 
@@ -104,6 +106,12 @@ namespace Medmanager
         {
             AjoutAntePatient ajoutAntePatient = new AjoutAntePatient();
             ajoutAntePatient.Show();
+        }
+
+        private void ajouterUneAllérgieÀUnPatientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AjoutAllergiesPatient ajoutAllergiesPatient = new AjoutAllergiesPatient();
+            ajoutAllergiesPatient.Show();
         }
     }
 }

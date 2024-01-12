@@ -32,20 +32,21 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.medicamentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultationMédicamentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajoutMédicamentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.consultationMédicamentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.patientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consulterPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.consulterPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ajouterUnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.créerUneOrdonnanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.ajouterUnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -75,13 +76,6 @@
             this.medicamentsToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.medicamentsToolStripMenuItem.Text = "Medicaments";
             // 
-            // consultationMédicamentToolStripMenuItem
-            // 
-            this.consultationMédicamentToolStripMenuItem.Name = "consultationMédicamentToolStripMenuItem";
-            this.consultationMédicamentToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
-            this.consultationMédicamentToolStripMenuItem.Text = "Consultation / modification Médicament";
-            this.consultationMédicamentToolStripMenuItem.Click += new System.EventHandler(this.consultationMédicamentToolStripMenuItem_Click);
-            // 
             // ajoutMédicamentsToolStripMenuItem
             // 
             this.ajoutMédicamentsToolStripMenuItem.Name = "ajoutMédicamentsToolStripMenuItem";
@@ -89,30 +83,55 @@
             this.ajoutMédicamentsToolStripMenuItem.Text = "Ajouter Médicaments";
             this.ajoutMédicamentsToolStripMenuItem.Click += new System.EventHandler(this.ajoutMédicamentsToolStripMenuItem_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(288, 6);
+            // 
+            // consultationMédicamentToolStripMenuItem
+            // 
+            this.consultationMédicamentToolStripMenuItem.Name = "consultationMédicamentToolStripMenuItem";
+            this.consultationMédicamentToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
+            this.consultationMédicamentToolStripMenuItem.Text = "Consultation / modification Médicament";
+            this.consultationMédicamentToolStripMenuItem.Click += new System.EventHandler(this.consultationMédicamentToolStripMenuItem_Click);
+            // 
             // patientToolStripMenuItem
             // 
             this.patientToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ajouterPatientToolStripMenuItem,
             this.toolStripSeparator1,
             this.consulterPatientToolStripMenuItem,
-            this.ajouterUnToolStripMenuItem});
+            this.ajouterUnToolStripMenuItem,
+            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem});
             this.patientToolStripMenuItem.Name = "patientToolStripMenuItem";
             this.patientToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.patientToolStripMenuItem.Text = "Patient";
             // 
-            // consulterPatientToolStripMenuItem
-            // 
-            this.consulterPatientToolStripMenuItem.Name = "consulterPatientToolStripMenuItem";
-            this.consulterPatientToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
-            this.consulterPatientToolStripMenuItem.Text = "Consulter / Modifier Patient";
-            this.consulterPatientToolStripMenuItem.Click += new System.EventHandler(this.consulterPatientToolStripMenuItem_Click);
-            // 
             // ajouterPatientToolStripMenuItem
             // 
             this.ajouterPatientToolStripMenuItem.Name = "ajouterPatientToolStripMenuItem";
-            this.ajouterPatientToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.ajouterPatientToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
             this.ajouterPatientToolStripMenuItem.Text = "Ajouter Patient";
             this.ajouterPatientToolStripMenuItem.Click += new System.EventHandler(this.ajouterPatientToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(255, 6);
+            // 
+            // consulterPatientToolStripMenuItem
+            // 
+            this.consulterPatientToolStripMenuItem.Name = "consulterPatientToolStripMenuItem";
+            this.consulterPatientToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.consulterPatientToolStripMenuItem.Text = "Consulter / Modifier Patient";
+            this.consulterPatientToolStripMenuItem.Click += new System.EventHandler(this.consulterPatientToolStripMenuItem_Click);
+            // 
+            // ajouterUnToolStripMenuItem
+            // 
+            this.ajouterUnToolStripMenuItem.Name = "ajouterUnToolStripMenuItem";
+            this.ajouterUnToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.ajouterUnToolStripMenuItem.Text = "Ajouter un antécédent à un patient";
+            this.ajouterUnToolStripMenuItem.Click += new System.EventHandler(this.ajouterUnToolStripMenuItem_Click);
             // 
             // consultationToolStripMenuItem
             // 
@@ -130,6 +149,11 @@
             this.créerUneOrdonnanceToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.créerUneOrdonnanceToolStripMenuItem.Text = "Créer une Ordonnance";
             this.créerUneOrdonnanceToolStripMenuItem.Click += new System.EventHandler(this.créerUneOrdonnanceToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(191, 6);
             // 
             // label1
             // 
@@ -166,27 +190,12 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // toolStripSeparator1
+            // ajouterUneAllérgieÀUnPatientToolStripMenuItem
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(255, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(191, 6);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(288, 6);
-            // 
-            // ajouterUnToolStripMenuItem
-            // 
-            this.ajouterUnToolStripMenuItem.Name = "ajouterUnToolStripMenuItem";
-            this.ajouterUnToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
-            this.ajouterUnToolStripMenuItem.Text = "Ajouter un antécédent à un patient";
-            this.ajouterUnToolStripMenuItem.Click += new System.EventHandler(this.ajouterUnToolStripMenuItem_Click);
+            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem.Name = "ajouterUneAllérgieÀUnPatientToolStripMenuItem";
+            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem.Text = "Ajouter une allérgie à un patient";
+            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem.Click += new System.EventHandler(this.ajouterUneAllérgieÀUnPatientToolStripMenuItem_Click);
             // 
             // MainMenu
             // 
@@ -231,6 +240,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem ajouterUnToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem ajouterUneAllérgieÀUnPatientToolStripMenuItem;
     }
 }
 

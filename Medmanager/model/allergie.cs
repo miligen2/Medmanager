@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Medmanager.model
 {
-    internal class allergie
+    internal class Allergie
     {
+        public int id { get; set; }
       public string Name { get; set; }
-      public allergie(string name) {
+      public Allergie(int id, string name) {
+            this.id = id;
             this.Name = name;
         }
     }

@@ -155,6 +155,7 @@
             this.label2.Size = new System.Drawing.Size(219, 43);
             this.label2.TabIndex = 14;
             this.label2.Text = "MedManager";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Main
             // 

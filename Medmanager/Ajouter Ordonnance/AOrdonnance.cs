@@ -21,12 +21,28 @@ namespace Medmanager
         private string posologie;
         private decimal duree;
         private string instruction;
-        public AOrdonnance()
+        private int medecinId;
+
+        public AOrdonnance(int medecinId)
         {
             InitializeComponent();
-            connection.Open();
-            LoadPatients(); // Appel de la méthode pour charger les patients dans le ComboBox
+            this.medecinId = medecinId;
 
+
+            connection.Open();
+
+            LoadPatients(); // Appel de la méthode pour charger les patients dans le ComboBox
+            IdMedecin();
+
+        }
+
+        private void IdMedecin()
+        {
+
+            string nameMedecin = connection.GetNomFromId(medecinId);
+
+            // Affichez l'ID du médecin dans un Label (remplacez labelMedecinId par le nom de votre Label)
+            label5.Text = $"ID du médecin : {nameMedecin}";
         }
         private void LoadPatients()
         {
@@ -117,6 +133,11 @@ namespace Medmanager
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             duree = numericUpDown1.Value;
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
