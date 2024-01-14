@@ -596,44 +596,51 @@ namespace Medmanager
             }
         }
 
-        public int InsertOrdonnance(string posologie, decimal duree, string ins, int id_medecin, int id_patient)
+        public int InsertOrdonnance(string posologie, decimal duree, string ins, int id_medecin, int id_patient,int id_medicament)
         {
-            int idOrdonnance = 0;
+            int idOrdonnance = -1; // Initialiser à une valeur invalide
+
             try
             {
+                string query = "INSERT INTO ordonnance (`posologie`, `duree_traitement`, `instruction_specifique`, `id_Medecin`, `id_patient`,id_medicament) VALUES (@posologie, @duree, @ins, @id_medecin, @id_patient,@id_medicament);SELECT LAST_INSERT_ID();";
 
-
-
-                string query = "INSERT INTO ordonnance (`posologie`, `duree_traitement`, `instruction_specifique`, `id_Medecin`, `id_patient`) VALUES (@posologie,@duree,@instruction, @id_medecin, @id_patient);SELECT LAST_INSERT_ID(); ";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@posologie", posologie);
                     cmd.Parameters.AddWithValue("@duree", duree);
-                    cmd.Parameters.AddWithValue("@instruction", ins);
+                    cmd.Parameters.AddWithValue("@ins", ins);
                     cmd.Parameters.AddWithValue("@id_medecin", id_medecin);
                     cmd.Parameters.AddWithValue("@id_patient", id_patient);
+                    cmd.Parameters.AddWithValue("@id_medicament", id_medicament);
 
+                    cmd.ExecuteNonQuery();
 
-                    idOrdonnance = Convert.ToInt32(cmd.ExecuteScalar());
-
+                    idOrdonnance = Convert.ToInt32(cmd.LastInsertedId);
+                    // Ajouter des déclarations de débogage
+                    Console.WriteLine("ID généré : " + idOrdonnance);
+                    Console.WriteLine("Query executed: " + query);
+                    // Récupérer l'ID généré
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Erreur lors de l'insertion des données : " + ex.Message);
             }
+     
             return idOrdonnance;
         }
-        public void InsertOrdonnanceMedicament(int idOrdonnance, int id_medicament)
+
+
+/*        public void InsertOrdonnanceMedicament(int idOrdonnance, int idMedicament)
         {
             try
             {
-                string query = "INSERT INTO ordonnance (`id`, `id_medicament`) VALUES (@idOrdonnance, @id_medicament)";
-
+                string query = "INSERT INTO ordonnance_medicament (`id_ordonnance`, `id_medicament`) VALUES (@idOrdonnance, @idMedicament);";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@idOrdonnance", idOrdonnance);
-                    cmd.Parameters.AddWithValue("@idMedicament", id_medicament);
+                    cmd.Parameters.AddWithValue("@idMedicament", idMedicament);
+
 
                     cmd.ExecuteNonQuery();
                 }
@@ -643,7 +650,7 @@ namespace Medmanager
                 Console.WriteLine("Erreur lors de l'insertion de l'association ordonnance-medicament : " + ex.Message);
             }
 
-        }
+        }*/
 
 
 
