@@ -40,13 +40,13 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.consulterPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterUnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.créerUneOrdonnanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -133,6 +133,13 @@
             this.ajouterUnToolStripMenuItem.Text = "Ajouter un antécédent à un patient";
             this.ajouterUnToolStripMenuItem.Click += new System.EventHandler(this.ajouterUnToolStripMenuItem_Click);
             // 
+            // ajouterUneAllérgieÀUnPatientToolStripMenuItem
+            // 
+            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem.Name = "ajouterUneAllérgieÀUnPatientToolStripMenuItem";
+            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem.Text = "Ajouter une allérgie à un patient";
+            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem.Click += new System.EventHandler(this.ajouterUneAllérgieÀUnPatientToolStripMenuItem_Click);
+            // 
             // consultationToolStripMenuItem
             // 
             this.consultationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -160,7 +167,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(118, 140);
+            this.label1.Location = new System.Drawing.Point(65, 173);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(639, 113);
@@ -182,20 +189,13 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(637, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(625, 44);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(158, 154);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // ajouterUneAllérgieÀUnPatientToolStripMenuItem
-            // 
-            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem.Name = "ajouterUneAllérgieÀUnPatientToolStripMenuItem";
-            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
-            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem.Text = "Ajouter une allérgie à un patient";
-            this.ajouterUneAllérgieÀUnPatientToolStripMenuItem.Click += new System.EventHandler(this.ajouterUneAllérgieÀUnPatientToolStripMenuItem_Click);
             // 
             // MainMenu
             // 

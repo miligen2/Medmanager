@@ -18,6 +18,7 @@ namespace Medmanager
 
         private Connection_DB connection = new Connection_DB();
 
+        private Patient selectedPatient;
         private string posologie;
         private decimal duree;
         private string instruction;
@@ -31,8 +32,10 @@ namespace Medmanager
 
             connection.Open();
 
-            LoadPatients(); // Appel de la méthode pour charger les patients dans le ComboBox
+            LoadPatients();
+            LoadMedicament();// Appel de la méthode pour charger les patients dans le ComboBox
             IdMedecin();
+            dataGridView1.Columns.Add("MedicamentColumn", "Médicament");
 
         }
 
@@ -41,8 +44,16 @@ namespace Medmanager
 
             string nameMedecin = connection.GetNomFromId(medecinId);
 
-            // Affichez l'ID du médecin dans un Label (remplacez labelMedecinId par le nom de votre Label)
-            label5.Text = $"ID du médecin : {nameMedecin}";
+            label5.Text = $"Dr {nameMedecin}";
+        }
+        private void LoadMedicament()
+        {
+            List<Medicament> medicaments = connection.GetMedicamentList();
+            comboBox2.Items.Clear();
+            foreach (Medicament medicament in medicaments)
+            {
+                comboBox2.Items.Add(medicament.name);
+            }
         }
         private void LoadPatients()
         {
@@ -62,62 +73,42 @@ namespace Medmanager
         }
 
 
-
-
-
-
-  
-
         private void buttonValider_Click(object sender, EventArgs e)
         {
             try
             {
-                connection.InsertOrdonnance(posologie, duree, instruction);
+                // Insérer les données d'ordonnance et récupérer l'id_ordonnance généré
+                int idOrdonnance = connection.InsertOrdonnance(posologie, duree, instruction, medecinId, selectedPatient.id);
 
-            }
-            catch { 
-            }
-/*            try
-            {
-                if (dataGridView1.SelectedRows.Count > 0)
+                // Ajouter les médicaments associés à l'ordonnance dans la base de données
+                foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    // Récupérer les informations du client sélectionné dans la dataGridView1
-                    DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
-                    int clienId = Convert.ToInt32(selectedRow.Cells["id"].Value);
+                    string medicationName = row.Cells["MedicamentColumn"].Value as string;
 
-                    // Récupérer les informations de la consultation
-                    string typeConsultation = textBox1.Text;
-                    DateTime dateConsultation = dateTimePicker2.Value;
-                    string commentaire = textBox3.Text;
+                    // Récupérer l'id_medicament à partir du nom du médicament
+                    int idMedicament = connection.GetMedicamentIdByName(medicationName);
 
-                    // Insérer les données de la consultation dans la base de données
-                    connection.InsertDataConsultation(clienId, typeConsultation, dateConsultation, commentaire);
-
-                    // Rafraîchir la liste des patients après l'insertion
-                    LoadPatients();
-
-                    // Effacer les champs de saisie
-                    textBox1.Text = "";
-                    textBox3.Text = "";
-                    dateTimePicker2.Value = DateTime.Now;
-
-
-                    MessageBox.Show("Consultation ajoutée avec succès.");
+                    // Insérer l'association id_ordonnance - id_medicament dans la table de liaison
+                    connection.InsertOrdonnanceMedicament(idOrdonnance, idMedicament);
                 }
-                else
-                {
-                    MessageBox.Show("Veuillez sélectionner un client dans la liste.");
-                }
+
+                MessageBox.Show("Ordonnance insérée avec succès !");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erreur lors de l'insertion des données de consultation : " + ex.Message);
-            }*/
+                MessageBox.Show("Erreur lors de l'insertion des données d'ordonnance : " + ex.Message);
+                Console.WriteLine("Erreur lors de l'insertion des données d'ordonnance : " + ex.Message);
+            }
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            int selectedIndex = comboBox1.SelectedIndex;
+            if (selectedIndex >= 0 && selectedIndex < comboBox1.Items.Count)
+            {
+                selectedPatient = connection.GetPatientsFromDatabase()[selectedIndex];
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -138,6 +129,29 @@ namespace Medmanager
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Get the selected medication from comboBox2
+            string selectedMedication = comboBox2.SelectedItem as string;
+
+            // Check if a medication is selected
+            if (!string.IsNullOrEmpty(selectedMedication))
+            {
+                // Add the selected medication to the DataGridView
+                dataGridView1.Rows.Add(selectedMedication);
+            }
         }
     }
 }
