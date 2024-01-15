@@ -19,6 +19,7 @@ namespace Medmanager
         
         private string login; 
         private string password;
+        private string hashedPassword;
         private Connection_DB conn = new Connection_DB();
         public Main()
         {
@@ -91,9 +92,11 @@ namespace Medmanager
 
         private void button1_Click(object sender, EventArgs e)
         {
+            hashedPassword = Register.HashMotDePass(password);
             try
             {
-                if (conn.Connexion(login,password)) 
+               
+                if (conn.Connexion(login,hashedPassword)) 
                 {
                     loadIDmedecin();
                     MainMenu mainMenu = new MainMenu(MedecinId);
@@ -110,6 +113,13 @@ namespace Medmanager
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Register register = new Register();
+            register.Show(this);
+            this.Hide();
         }
     }
 }

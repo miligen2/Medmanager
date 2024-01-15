@@ -185,7 +185,6 @@
       <DependentUpon>FormModifier.cs</DependentUpon>
     </Compile>
     <Compile Include="Connection_DB.cs" />
-    <Compile Include="DrugDataAcces.cs" />
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>

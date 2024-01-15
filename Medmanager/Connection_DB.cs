@@ -19,8 +19,8 @@ using System.Windows.Forms;
 namespace Medmanager
 {
     internal class Connection_DB
-    //La classe Connection_DB est actuellement définie comme internal,
-    //ce qui signifie qu'elle est accessible uniquement à l'intérieur de l'assembly où elle est déclarée.*
+    // La classe Connection_DB est actuellement définie comme internal,
+    // ce qui signifie qu'elle est accessible uniquement à l'intérieur de l'assembly où elle est déclarée.
     {
 
         MySqlConnection conn;
@@ -101,6 +101,36 @@ namespace Medmanager
                 Console.WriteLine("Erreur de connexion : " + ex.Message);
                 return false;
             }
+        }
+
+        public void InsertMedecin(string nom, string prenom, string login, string hashedPassword)
+        {
+                try
+                {
+
+
+                    // Requête SQL d'insertion
+                    string query = "INSERT INTO medecin (nom, prenom, login, password) VALUES (@Nom, @Prenom, @Login, @Password)";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        // Paramètres
+                        cmd.Parameters.AddWithValue("@Nom", nom);
+                        cmd.Parameters.AddWithValue("@Prenom", prenom);
+                        cmd.Parameters.AddWithValue("@Login", login);
+                        cmd.Parameters.AddWithValue("@Password", hashedPassword);
+
+                        // Exécution de la requête
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("Médecin ajouté avec succès !");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de l'insertion du médecin : " + ex.Message);
+                }
+            
         }
 
         // main =
