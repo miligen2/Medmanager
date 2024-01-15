@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 09 jan. 2024 à 20:36
+-- Généré le : lun. 15 jan. 2024 à 20:07
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -70,7 +70,6 @@ INSERT INTO `allergies` (`id_allergie`, `nom`) VALUES
 (31, 'Allergie aux fruits rouges'),
 (32, 'Allergie aux fruits tropicaux'),
 (33, 'Allergie aux crustacés'),
-(34, 'Allergie aux arachides'),
 (35, 'Allergie aux pistaches'),
 (36, 'Allergie aux noix'),
 (37, 'Allergie aux mollusques'),
@@ -80,7 +79,63 @@ INSERT INTO `allergies` (`id_allergie`, `nom`) VALUES
 (41, 'Allergie aux médicaments contre le rhume'),
 (42, 'Allergie aux colorants alimentaires'),
 (43, 'Allergie au gluten'),
-(44, 'Allergie au soja');
+(44, 'Allergie au soja'),
+(45, 'Allergie au lait'),
+(46, 'Allergie aux œufs'),
+(47, 'Allergie au blé'),
+(48, 'Allergie au maïs'),
+(49, 'Allergie au poisson'),
+(50, 'Allergie aux fruits à coque'),
+(51, 'Allergie au céleri'),
+(52, 'Allergie à la moutarde'),
+(53, 'Allergie au sésame'),
+(54, 'Allergie aux sulfites'),
+(55, 'Allergie aux légumineuses'),
+(56, 'Allergie au kiwi'),
+(57, 'Allergie à l\'ananas'),
+(58, 'Allergie à la banane'),
+(59, 'Allergie à l\'avocat'),
+(60, 'Allergie à la tomate'),
+(61, 'Allergie au chocolat'),
+(62, 'Allergie au café'),
+(63, 'Allergie au thé'),
+(64, 'Allergie au poivre'),
+(65, 'Allergie à l\'insuline humaine'),
+(66, 'Allergie au sulfate de morphine'),
+(67, 'Allergie à l\'érythromycine'),
+(68, 'Allergie à la tétracycline'),
+(69, 'Allergie à la doxycycline'),
+(70, 'Allergie à la streptomycine'),
+(71, 'Allergie à la gentamicine'),
+(72, 'Allergie à la vancomycine'),
+(73, 'Allergie à l\'amoxicilline-clavulanate'),
+(74, 'Allergie à la ciprofloxacine'),
+(75, 'Allergie à la lévofloxacine'),
+(76, 'Allergie à la clarithromycine'),
+(77, 'Allergie à l\'azithromycine'),
+(78, 'Allergie à la nitroglycérine'),
+(79, 'Allergie à l\'amlodipine'),
+(80, 'Allergie à la warfarine sodique'),
+(81, 'Allergie à la digoxine'),
+(82, 'Allergie à l\'atorvastatine calcique'),
+(83, 'Allergie à la simvastatine sodique'),
+(84, 'Allergie à l\'aspirine acétylsalicylique'),
+(85, 'Allergie à l\'ibuprofène'),
+(86, 'Allergie à l\'acétaminophène'),
+(87, 'Allergie à la morphine sulfate'),
+(88, 'Allergie à la codéine phosphate'),
+(89, 'Allergie à la hydrocodone bitartrate'),
+(90, 'Allergie à l\'oxycodone hydrochloride'),
+(91, 'Allergie à la fentanyl'),
+(92, 'Allergie à la lidocaïne'),
+(93, 'Allergie à la procaïne'),
+(94, 'Allergie à l\'insuline glargine'),
+(95, 'Allergie à l\'insuline lispro'),
+(96, 'Allergie à l\'insuline detemir'),
+(97, 'Allergie à l\'insuline asparte'),
+(98, 'Allergie à la metformine'),
+(99, 'Allergie à la pioglitazone'),
+(100, 'Allergie à la sitagliptine');
 
 -- --------------------------------------------------------
 
@@ -89,7 +144,7 @@ INSERT INTO `allergies` (`id_allergie`, `nom`) VALUES
 --
 
 CREATE TABLE `antecedent` (
-  `id` int(11) NOT NULL,
+  `id_antecedent` int(11) NOT NULL,
   `nom` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -97,7 +152,7 @@ CREATE TABLE `antecedent` (
 -- Déchargement des données de la table `antecedent`
 --
 
-INSERT INTO `antecedent` (`id`, `nom`) VALUES
+INSERT INTO `antecedent` (`id_antecedent`, `nom`) VALUES
 (1, 'Hypertension artérielle'),
 (2, 'Diabète de type 2'),
 (3, 'Maladie coronarienne'),
@@ -117,7 +172,37 @@ INSERT INTO `antecedent` (`id`, `nom`) VALUES
 (17, 'Maladie inflammatoire de l\'intestin'),
 (18, 'Allergie alimentaire sévère'),
 (19, 'Asthme'),
-(20, 'Trouble de la coagulation sanguine héréditaire');
+(20, 'Trouble de la coagulation sanguine héréditaire'),
+(21, 'Trouble de la coagulation sanguine acquise'),
+(22, 'Insuffisance rénale chronique'),
+(23, 'Diabète de type 1'),
+(24, 'Hypercholestérolémie'),
+(25, 'Anémie'),
+(26, 'Polyarthrite rhumatoïde'),
+(27, 'Maladie de Crohn'),
+(28, 'Rectocolite hémorragique'),
+(29, 'Trouble bipolaire'),
+(30, 'Sclérose en plaques'),
+(31, 'Hépatite chronique'),
+(32, 'Maladie de Parkinson'),
+(33, 'Psoriasis'),
+(34, 'Endométriose'),
+(35, 'Fibromyalgie'),
+(36, 'Syndrome de l\'intestin irritable'),
+(37, 'Glaucome'),
+(38, 'Ostéoporose'),
+(39, 'Trouble de la personnalité borderline'),
+(40, 'Hémophilie'),
+(41, 'Déficit en vitamine B12'),
+(42, 'Cirrhose du foie'),
+(43, 'Aplasie médullaire'),
+(44, 'Maladie de Raynaud'),
+(45, 'Syndrome d\'alcoolisme fœtal'),
+(46, 'Hyperthyroïdie'),
+(47, 'Colite ulcéreuse'),
+(48, 'Lupus érythémateux disséminé'),
+(49, 'Myasthénie grave'),
+(50, 'Sclérose latérale amyotrophique');
 
 -- --------------------------------------------------------
 
@@ -130,6 +215,16 @@ CREATE TABLE `a_eu` (
   `id_patient` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `a_eu`
+--
+
+INSERT INTO `a_eu` (`id`, `id_patient`) VALUES
+(1, 1),
+(1, 29),
+(19, 1),
+(19, 35);
+
 -- --------------------------------------------------------
 
 --
@@ -141,18 +236,92 @@ CREATE TABLE `est` (
   `id_patient` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `est`
+--
+
+INSERT INTO `est` (`id_allergie`, `id_patient`) VALUES
+(16, 8),
+(24, 28);
+
 -- --------------------------------------------------------
 
 --
--- Structure de la table `incompatible`
+-- Structure de la table `incompatibles`
 --
 
-CREATE TABLE `incompatible` (
-  `id` int(11) NOT NULL,
-  `id_medicament` int(11) NOT NULL,
-  `id_allergie` int(11) NOT NULL,
-  `id_medicament_incompatible` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `incompatibles` (
+  `id_a` int(11) NOT NULL,
+  `id_med` int(11) NOT NULL,
+  `id_al` int(11) NOT NULL,
+  `id_med_Medicament` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `incompatibles`
+--
+
+INSERT INTO `incompatibles` (`id_a`, `id_med`, `id_al`, `id_med_Medicament`) VALUES
+(1, 1, 5, 1),
+(2, 2, 28, 2),
+(3, 3, 5, 3),
+(4, 4, 9, 4),
+(5, 5, 41, 5),
+(6, 6, 27, 6),
+(7, 7, 17, 7),
+(8, 8, 25, 8),
+(9, 9, 74, 9),
+(10, 10, 79, 10),
+(11, 11, 11, 15),
+(11, 11, 32, 11),
+(12, 12, 12, 10),
+(12, 12, 21, 12),
+(13, 13, 13, 13),
+(13, 13, 22, 13),
+(14, 14, 14, 20),
+(14, 14, 88, 14),
+(15, 15, 15, 2),
+(15, 15, 26, 15),
+(16, 16, 6, 16),
+(16, 16, 16, 1),
+(17, 17, 17, 2),
+(17, 17, 54, 17),
+(18, 18, 11, 18),
+(18, 18, 18, 3),
+(19, 19, 19, 4),
+(19, 19, 43, 19),
+(20, 20, 20, 5),
+(20, 20, 50, 20),
+(21, 21, 41, 21),
+(22, 22, 84, 22),
+(23, 23, 23, 23),
+(24, 24, 13, 24),
+(25, 25, 25, 25),
+(26, 26, 26, 26),
+(27, 27, 27, 27),
+(28, 28, 2, 28),
+(29, 29, 9, 29),
+(30, 30, 1, 30),
+(31, 31, 10, 31),
+(32, 32, 11, 32),
+(33, 33, 33, 33),
+(34, 34, 4, 34),
+(35, 35, 15, 35),
+(36, 36, 36, 36),
+(37, 37, 8, 37),
+(38, 38, 38, 38),
+(39, 39, 39, 39),
+(40, 40, 40, 40),
+(41, 41, 37, 41),
+(42, 42, 10, 42),
+(43, 43, 82, 43),
+(44, 44, 63, 44),
+(45, 45, 80, 45),
+(46, 46, 69, 46),
+(47, 47, 29, 47),
+(48, 48, 14, 48),
+(49, 49, 77, 49),
+(50, 50, 16, 50);
 
 -- --------------------------------------------------------
 
@@ -164,10 +333,17 @@ CREATE TABLE `medecin` (
   `id` int(11) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
-  `date_naissance` date NOT NULL,
   `login` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `medecin`
+--
+
+INSERT INTO `medecin` (`id`, `nom`, `prenom`, `login`, `password`) VALUES
+(1, 'macaire', 'angelo', 'a', 'a'),
+(2, 'b', 'b', 'b', 'b');
 
 -- --------------------------------------------------------
 
@@ -205,7 +381,40 @@ INSERT INTO `medicament` (`id`, `nom`, `contre_indiction`) VALUES
 (17, 'Hydrochlorothiazide', 'Allergie aux sulfamides'),
 (18, 'Clopidogrel', 'Troubles hémorragiques'),
 (19, 'Allopurinol', 'Réaction cutanée sévère'),
-(20, 'Furosemide', 'Déshydratation sévère');
+(20, 'Furosemide', 'Déshydratation sévère'),
+(21, 'Aspirine', 'Risque accru d\'ulcère gastrique'),
+(22, 'Simvastatine', 'Rhabdomyolyse'),
+(23, 'Fluoxétine', 'Syndrome sérotoninergique'),
+(24, 'Diazépam', 'Glaucome à angle fermé'),
+(25, 'Sertraline', 'Utilisation concomitante d\'inhibiteurs de la MAO'),
+(26, 'Citalopram', 'Allongement de l\'intervalle QT'),
+(27, 'Naproxène', 'Risque accru d\'ulcère gastrique'),
+(28, 'Ibuprofène', 'Risque accru d\'ulcère gastrique'),
+(29, 'Métronidazole', 'Réaction de type disulfirame avec l\'alcool'),
+(30, 'Chloramphénicol', 'Risque de syndrome du bébé gris'),
+(31, 'Codeine', 'Risque de dépression respiratoire sévère'),
+(32, 'Warfarine', 'Risque élevé de saignement'),
+(33, 'Méthotrexate', 'Toxicité hépatique'),
+(34, 'Acétaminophène', 'Toxicité hépatique'),
+(35, 'Amiodarone', 'Toxicité pulmonaire'),
+(36, 'Thalidomide', 'Risque tératogène'),
+(37, 'Carbamazépine', 'Risque de syndrome de Stevens-Johnson'),
+(38, 'Phénytoïne', 'Hyperplasie gingivale'),
+(39, 'Valproate', 'Risque de malformations congénitales'),
+(40, 'Isotrétinoïne', 'Risque de malformations congénitales'),
+(41, 'Phénylbutazone', 'Risque d\'ulcères gastro-intestinaux'),
+(42, 'Doxycycline', 'Risque de photosensibilité'),
+(43, 'Lithium', 'Toxicité rénale'),
+(44, 'Digoxine', 'Risque de toxicité digoxique'),
+(45, 'Méthylprednisolone', 'Risque accru d\'infections'),
+(46, 'Risperidone', 'Risque de syndrome malin des neuroleptiques'),
+(47, 'Céfotaxime', 'Réaction de type disulfirame avec l\'alcool'),
+(48, 'Fentanyl', 'Dépression respiratoire sévère'),
+(49, 'Levofloxacin', 'Risque de tendinite et de rupture tendineuse'),
+(50, 'Oxycodone', 'Dépression respiratoire sévère'),
+(51, 'Test', 'Antécédents d\'accident vasculaire cérébral'),
+(52, '2test', 'Anémie'),
+(53, 'test', 'Anémie');
 
 -- --------------------------------------------------------
 
@@ -214,14 +423,35 @@ INSERT INTO `medicament` (`id`, `nom`, `contre_indiction`) VALUES
 --
 
 CREATE TABLE `ordonnance` (
-  `id` int(11) NOT NULL,
+  `id_o` int(11) NOT NULL,
   `posologie` varchar(50) NOT NULL,
   `duree_traitement` int(11) NOT NULL,
   `instruction_specifique` varchar(50) NOT NULL,
-  `id_Medecin` int(11) NOT NULL,
+  `id_medecin` int(11) NOT NULL,
   `id_patient` int(11) NOT NULL,
   `id_medicament` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `ordonnance`
+--
+
+INSERT INTO `ordonnance` (`id_o`, `posologie`, `duree_traitement`, `instruction_specifique`, `id_medecin`, `id_patient`, `id_medicament`) VALUES
+(28, 'a', 1, 'a', 1, 7, 3),
+(31, 'a', 2, 'a', 1, 24, 1),
+(33, 'a', 2, 'a', 1, 24, 1),
+(35, 'a', 2, 'a', 1, 7, 3),
+(37, 'r', 1, 'r', 1, 25, 3),
+(39, 'r', 1, 'r', 1, 7, 9),
+(41, 'a', 1, 'a', 1, 5, 3),
+(43, 'a', 1, 'a', 1, 5, 3),
+(45, 'a', 1, 'a', 1, 30, 28),
+(47, 'a', 1, 'a', 1, 30, 5),
+(49, 'r', 1, 'r', 1, 19, 4),
+(51, 'a', 1, 'a', 1, 24, 6),
+(53, 'r', 1, 'feazraezrze', 1, 14, 6),
+(55, 'j', 0, 'ntm', 1, 36, 24),
+(57, 'r', 1, 'r', 1, 30, 7);
 
 -- --------------------------------------------------------
 
@@ -277,7 +507,8 @@ INSERT INTO `patient` (`id_patient`, `nom`, `prenom`, `sexe`, `numero`) VALUES
 (33, 'Young', 'Avery', 'Femme', 0),
 (34, 'Harrison', 'Elijah', 'Homme', 0),
 (35, 'Macaire', 'Angelo', 'Homme', 699931346),
-(36, 'Macaire', 'Angelo', 'Homme', 699931346);
+(36, 'Macaire', 'Angelo', 'Homme', 699931346),
+(37, 'test', 'test', 'test', 0);
 
 --
 -- Index pour les tables déchargées
@@ -293,7 +524,7 @@ ALTER TABLE `allergies`
 -- Index pour la table `antecedent`
 --
 ALTER TABLE `antecedent`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_antecedent`);
 
 --
 -- Index pour la table `a_eu`
@@ -310,13 +541,13 @@ ALTER TABLE `est`
   ADD KEY `est_patient0_FK` (`id_patient`);
 
 --
--- Index pour la table `incompatible`
+-- Index pour la table `incompatibles`
 --
-ALTER TABLE `incompatible`
-  ADD PRIMARY KEY (`id`,`id_medicament`,`id_allergie`,`id_medicament_incompatible`),
-  ADD KEY `incompatible_medicament0_FK` (`id_medicament`),
-  ADD KEY `incompatible_allergies1_FK` (`id_allergie`),
-  ADD KEY `incompatible_medicament2_FK` (`id_medicament_incompatible`);
+ALTER TABLE `incompatibles`
+  ADD PRIMARY KEY (`id_a`,`id_med`,`id_al`,`id_med_Medicament`),
+  ADD KEY `incompatible_Medicament0_FK` (`id_med`),
+  ADD KEY `incompatible_Allergie1_FK` (`id_al`),
+  ADD KEY `incompatible_Medicament2_FK` (`id_med_Medicament`);
 
 --
 -- Index pour la table `medecin`
@@ -334,10 +565,10 @@ ALTER TABLE `medicament`
 -- Index pour la table `ordonnance`
 --
 ALTER TABLE `ordonnance`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `ordonnance_Medecin_FK` (`id_Medecin`),
-  ADD KEY `ordonnance_patient0_FK` (`id_patient`),
-  ADD KEY `ordonnance_medicament1_FK` (`id_medicament`);
+  ADD PRIMARY KEY (`id_o`),
+  ADD KEY `ordonnance_Medecin_FK` (`id_medecin`),
+  ADD KEY `ordonnance_Patient0_FK` (`id_patient`),
+  ADD KEY `ordonnance_Medicament1_FK` (`id_medicament`);
 
 --
 -- Index pour la table `patient`
@@ -353,37 +584,37 @@ ALTER TABLE `patient`
 -- AUTO_INCREMENT pour la table `allergies`
 --
 ALTER TABLE `allergies`
-  MODIFY `id_allergie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id_allergie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT pour la table `antecedent`
 --
 ALTER TABLE `antecedent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_antecedent` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT pour la table `medecin`
 --
 ALTER TABLE `medecin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `medicament`
 --
 ALTER TABLE `medicament`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT pour la table `ordonnance`
 --
 ALTER TABLE `ordonnance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_o` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT pour la table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id_patient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_patient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- Contraintes pour les tables déchargées
@@ -393,7 +624,7 @@ ALTER TABLE `patient`
 -- Contraintes pour la table `a_eu`
 --
 ALTER TABLE `a_eu`
-  ADD CONSTRAINT `a_eu_Antecedent_FK` FOREIGN KEY (`id`) REFERENCES `antecedent` (`id`),
+  ADD CONSTRAINT `a_eu_Antecedent_FK` FOREIGN KEY (`id`) REFERENCES `antecedent` (`id_antecedent`),
   ADD CONSTRAINT `a_eu_patient0_FK` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id_patient`);
 
 --
@@ -404,21 +635,21 @@ ALTER TABLE `est`
   ADD CONSTRAINT `est_patient0_FK` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id_patient`);
 
 --
--- Contraintes pour la table `incompatible`
+-- Contraintes pour la table `incompatibles`
 --
-ALTER TABLE `incompatible`
-  ADD CONSTRAINT `incompatible_Antecedent_FK` FOREIGN KEY (`id`) REFERENCES `antecedent` (`id`),
-  ADD CONSTRAINT `incompatible_allergies1_FK` FOREIGN KEY (`id_allergie`) REFERENCES `allergies` (`id_allergie`),
-  ADD CONSTRAINT `incompatible_medicament0_FK` FOREIGN KEY (`id_medicament`) REFERENCES `medicament` (`id`),
-  ADD CONSTRAINT `incompatible_medicament2_FK` FOREIGN KEY (`id_medicament_incompatible`) REFERENCES `medicament` (`id`);
+ALTER TABLE `incompatibles`
+  ADD CONSTRAINT `incompatible_Allergie1_FK` FOREIGN KEY (`id_al`) REFERENCES `allergies` (`id_allergie`),
+  ADD CONSTRAINT `incompatible_Antecedent_FK` FOREIGN KEY (`id_a`) REFERENCES `antecedent` (`id_antecedent`),
+  ADD CONSTRAINT `incompatible_Medicament0_FK` FOREIGN KEY (`id_med`) REFERENCES `medicament` (`id`),
+  ADD CONSTRAINT `incompatible_Medicament2_FK` FOREIGN KEY (`id_med_Medicament`) REFERENCES `medicament` (`id`);
 
 --
 -- Contraintes pour la table `ordonnance`
 --
 ALTER TABLE `ordonnance`
-  ADD CONSTRAINT `ordonnance_Medecin_FK` FOREIGN KEY (`id_Medecin`) REFERENCES `medecin` (`id`),
-  ADD CONSTRAINT `ordonnance_medicament1_FK` FOREIGN KEY (`id_medicament`) REFERENCES `medicament` (`id`),
-  ADD CONSTRAINT `ordonnance_patient0_FK` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id_patient`);
+  ADD CONSTRAINT `ordonnance_Medecin_FK` FOREIGN KEY (`id_medecin`) REFERENCES `medecin` (`id`),
+  ADD CONSTRAINT `ordonnance_Medicament1_FK` FOREIGN KEY (`id_medicament`) REFERENCES `medicament` (`id`),
+  ADD CONSTRAINT `ordonnance_Patient0_FK` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id_patient`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
