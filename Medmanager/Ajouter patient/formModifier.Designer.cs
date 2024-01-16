@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormModifier));
             this.textBoxNumero = new System.Windows.Forms.TextBox();
             this.textBoxSexe = new System.Windows.Forms.TextBox();
             this.textBoxPrenom = new System.Windows.Forms.TextBox();
@@ -38,6 +39,8 @@
             this.buttonValider = new System.Windows.Forms.Button();
             this.textBoxNom = new System.Windows.Forms.TextBox();
             this.btnSupprimer = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxNumero
@@ -144,11 +147,25 @@
             this.btnSupprimer.UseVisualStyleBackColor = false;
             this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(571, 307);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(59, 35);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 24;
+            this.pictureBox2.TabStop = false;
+            // 
             // FormModifier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(641, 353);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.textBoxNom);
             this.Controls.Add(this.buttonValider);
@@ -162,6 +179,7 @@
             this.Name = "FormModifier";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormModifier_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,5 +196,6 @@
         private System.Windows.Forms.Button buttonValider;
         private System.Windows.Forms.TextBox textBoxNom;
         private System.Windows.Forms.Button btnSupprimer;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

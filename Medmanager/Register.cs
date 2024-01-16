@@ -99,6 +99,11 @@ namespace Medmanager
             this.Hide();
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             login = textBox1.Text;
