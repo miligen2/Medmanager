@@ -660,35 +660,58 @@ namespace Medmanager
             return idOrdonnance;
         }
 
-
-/*        public void InsertOrdonnanceMedicament(int idOrdonnance, int idMedicament)
+        public void GetPatientAllergieByID(int id_patient, DataGridView dataGridView)
         {
             try
             {
-                string query = "INSERT INTO ordonnance_medicament (`id_ordonnance`, `id_medicament`) VALUES (@idOrdonnance, @idMedicament);";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                string query = @"
+                            SELECT a.nom
+                            FROM Est e
+                            INNER JOIN Allergies a ON e.id_allergie = a.id_allergie
+                            WHERE e.id_patient = @id_patient";
+
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@id_patient", id_patient);
+
+                DataTable dataTable = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(dataTable);
+
+                dataGridView.DataSource = dataTable;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public bool getAllergieMedicament(int idPatient, int  idMedicament)
+        {
+            string query = @"
+                SELECT a.nom, m.nom AS nom_medicament
+                FROM est e 
+                INNER JOIN incompatibles i ON e.id_allergie = i.id_al
+                INNER JOIN allergies a ON i.id_al = a.id_allergie
+                INNER JOIN medicament m ON i.id_med = m.id
+                WHERE e.id_patient = @idP AND e.id_allergie = @idMed
+                                            ";
+            MySqlCommand command = new MySqlCommand(query, conn);
+            command.Parameters.AddWithValue("@idP", idPatient);
+            command.Parameters.AddWithValue("@idMed", idMedicament);
+            using (MySqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
                 {
-                    cmd.Parameters.AddWithValue("@idOrdonnance", idOrdonnance);
-                    cmd.Parameters.AddWithValue("@idMedicament", idMedicament);
+                    string allergie = reader["nom"].ToString();
+                    string medicament = reader["nom_medicament"].ToString();
 
-
-                    cmd.ExecuteNonQuery();
+                    Console.WriteLine("Allergie : " + allergie + "médicament" + medicament);
+                    return true;
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Erreur lors de l'insertion de l'association ordonnance-medicament : " + ex.Message);
-            }
+            return false;
 
-        }*/
-
-
-
-
-
-
-
-
+        }
     }
 
 }
