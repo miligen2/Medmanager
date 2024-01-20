@@ -127,8 +127,8 @@
             // 
             // buttonValider
             // 
-            this.buttonValider.BackColor = System.Drawing.Color.SeaGreen;
-            this.buttonValider.Location = new System.Drawing.Point(336, 271);
+            this.buttonValider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.buttonValider.Location = new System.Drawing.Point(323, 239);
             this.buttonValider.Margin = new System.Windows.Forms.Padding(2);
             this.buttonValider.Name = "buttonValider";
             this.buttonValider.Size = new System.Drawing.Size(76, 37);
@@ -141,7 +141,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(543, 340);
+            this.pictureBox2.Location = new System.Drawing.Point(503, 298);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(59, 35);
@@ -154,7 +154,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(613, 386);
+            this.ClientSize = new System.Drawing.Size(573, 344);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.buttonValider);
             this.Controls.Add(this.textBox4);

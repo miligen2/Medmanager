@@ -156,14 +156,18 @@
                     // Obtenez le nom complet du patient
                     string nomPatient = $"{selectedPatient.Nom}_{selectedPatient.Prenom}";
 
-                    // Concaténez le nom du patient avec le nom du fichier PDF
-                    string nomFichierPDF = $"ordonnance_{nomPatient}.pdf";
+                // Concaténez le nom du patient avec le nom du fichier PDF
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Fichiers PDF (*.pdf)|*.pdf";
+                saveFileDialog.FileName = $"ordonnance_{nomPatient}";
 
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
                     // Enregistrez le PDF avec le nouveau nom de fichier
-                    pdfDocument.Save(nomFichierPDF);
-
+                    pdfDocument.Save(saveFileDialog.FileName);
                     MessageBox.Show("Document PDF créé avec succès !");
                 }
+            }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Oups une erreur est survenue, veuillez réessayer");

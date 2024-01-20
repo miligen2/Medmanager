@@ -21,17 +21,25 @@ namespace Medmanager
     public partial class MainMenu : Form
     {
         private int medecinId;
+        Connection_DB connection = new Connection_DB();
         public MainMenu(int medecinId)
         {
             InitializeComponent();
 
             this.medecinId = medecinId;
-            Connection_DB connection = new Connection_DB();
+      
             connection.Open();
 
             int numberOfPatients = connection.GetNumberOfPatients();
             label3.Text = $"Nombre de patient : {numberOfPatients}";
+            NameMedecin();
 
+        }
+
+        private void NameMedecin()
+        {
+            string nameMedecin = connection.GetNomFromId(medecinId);
+            label2.Text = $"Bonjour, Dr {nameMedecin}";
         }
 
         private void consultationMédicamentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -112,6 +120,11 @@ namespace Medmanager
         {
             AjoutAllergiesPatient ajoutAllergiesPatient = new AjoutAllergiesPatient();
             ajoutAllergiesPatient.Show();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

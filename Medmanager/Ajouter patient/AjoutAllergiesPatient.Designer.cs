@@ -109,6 +109,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AjoutAllergiesPatient";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.AjoutAllergiesPatient_Load);
