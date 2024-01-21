@@ -140,6 +140,7 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AMedicament";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ajouter un médicament - MedManager ";
             this.Load += new System.EventHandler(this.AMedicament_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

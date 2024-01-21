@@ -152,6 +152,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormDetails";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modifier / Supprimer le médicament - MedManager";
             this.Load += new System.EventHandler(this.FormDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

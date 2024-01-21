@@ -109,6 +109,7 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LMedicament";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liste Médicament - MedManager";
             this.Load += new System.EventHandler(this.LMedicament_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

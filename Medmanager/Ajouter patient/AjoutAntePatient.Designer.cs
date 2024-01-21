@@ -130,6 +130,7 @@
             this.Controls.Add(this.comboBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AjoutAntePatient";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Antécedent";
             this.Load += new System.EventHandler(this.AjoutAntePatient_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

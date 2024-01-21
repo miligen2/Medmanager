@@ -90,6 +90,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox1);
             this.Name = "ConsulterAntecedent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.ConsulterAntecedent_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
