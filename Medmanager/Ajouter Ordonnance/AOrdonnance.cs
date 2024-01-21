@@ -250,34 +250,42 @@
 
             private void button1_Click(object sender, EventArgs e)
             {
-                // Récupérer le médicament sélectionné depuis comboBox2
-                string selectedMedication = comboBox2.SelectedItem as string;
+                try 
+                { 
+                    // Récupérer le médicament sélectionné depuis comboBox2
+                    string selectedMedication = comboBox2.SelectedItem as string;
 
-                // Vérifier si un médicament est sélectionné
-                if (!string.IsNullOrEmpty(selectedMedication))
-                {
-                // Obtenir l'ID du médicament sélectionné à partir de la base de données
-                selectedMedicationId = connection.GetMedicamentIdByName(selectedMedication);
-                // Vérifier si le patient est allergique au médicament sélectionné
-                bool hasAllergy = connection.getAllergieMedicament(selectedPatient.id, selectedMedicationId);
-
-                if (hasAllergy)
-                {
-                    // Afficher une boîte de dialogue demandant si le médecin souhaite procéder
-                    DialogResult result = MessageBox.Show("Le patient a une allergie à ce médicament. Voulez-vous quand même l'ajouter à l'ordonnance ?", "Allergie au médicament", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (result == DialogResult.Yes)
+                    // Vérifier si un médicament est sélectionné
+                    if (!string.IsNullOrEmpty(selectedMedication))
                     {
-                        // Ajouter le médicament sélectionné à la DataGridView
-                        dataGridView1.Rows.Add(selectedMedication);
+                        // Obtenir l'ID du médicament sélectionné à partir de la base de données
+                        selectedMedicationId = connection.GetMedicamentIdByName(selectedMedication);
+                        // Vérifier si le patient est allergique au médicament sélectionné
+                        bool hasAllergy = connection.getAllergieMedicament(selectedPatient.id, selectedMedicationId);
+
+                        if (hasAllergy)
+                        {
+                            // Afficher une boîte de dialogue demandant si le médecin souhaite procéder
+                            DialogResult result = MessageBox.Show("Le patient a une allergie à ce médicament. Voulez-vous quand même l'ajouter à l'ordonnance ?", "Allergie au médicament", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                            if (result == DialogResult.Yes)
+                            {
+                                // Ajouter le médicament sélectionné à la DataGridView
+                                dataGridView1.Rows.Add(selectedMedication);
+                            }
+                        }
+                        else
+                        {
+                            // Ajouter le médicament sélectionné à la DataGridView
+                            dataGridView1.Rows.Add(selectedMedication);
+                        }
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    // Ajouter le médicament sélectionné à la DataGridView
-                    dataGridView1.Rows.Add(selectedMedication);
+                    MessageBox.Show("Oups une erreur est survenue lors de l'ajout du médicament à l'ordonnance. Détails : " + ex.Message);
+                    Console.WriteLine("Erreur lors de l'ajout du médicament à l'ordonnance : " + ex.Message);
                 }
-            }
             }
 
             private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
