@@ -78,10 +78,7 @@
                 // Mise à jour visuelle de la DataGridView
                 dataGridView1.Refresh();
             }
-            private void verifSiIlPeutPRendreLeMédicament()
-            {
-                connection.getAllergieMedicament(selectedPatient.id, selectedMedicationId);
-            }
+
             private void GeneratePDF()
             {
                 try
@@ -183,32 +180,43 @@
             }
 
 
-            private void buttonValider_Click(object sender, EventArgs e)
+        private void buttonValider_Click(object sender, EventArgs e)
+        {
+            try
             {
-                try
+                // Récupérer l'ID du patient sélectionné
+                int idPatient = selectedPatient.id;
+
+                // Parcourir chaque ligne du DataGridView
+                foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    int idPatient = selectedPatient.id;
+                    // Obtenir le nom du médicament à partir de la cellule "MedicamentColumn"
+                    string medicationName = row.Cells["MedicamentColumn"].Value as string;
 
-                    foreach (DataGridViewRow row in dataGridView1.Rows)
-                    {
-                        string medicationName = row.Cells["MedicamentColumn"].Value as string;
-                        int idMedicament = connection.GetMedicamentIdByName(medicationName);
+                    // Obtenir l'ID du médicament en utilisant le nom du médicament
+                    int idMedicament = connection.GetMedicamentIdByName(medicationName);
 
-                        // Insérer les données d'ordonnance
-                        connection.InsertOrdonnance(posologie, duree, instruction, medecinId, idPatient,idMedicament);
-
-                    }
-                    GeneratePDF();
-                    MessageBox.Show("Ordonnance insérée avec succès !");
+                    // Insérer les données d'ordonnance dans la base de données
+                    connection.InsertOrdonnance(posologie, duree, instruction, medecinId, idPatient, idMedicament);
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Oups une erreur est survenu veuillez réessayer");
-                    Console.WriteLine("Erreur lors de l'insertion des données d'ordonnance : " + ex.Message);
-                }
+
+                // Générer le document PDF après l'insertion des données
+                GeneratePDF();
+
+                // Afficher un message de succès
+                MessageBox.Show("Ordonnance insérée avec succès !");
             }
+            catch (Exception ex)
+            {
+                // Afficher un message d'erreur en cas d'exception
+                MessageBox.Show("Oups une erreur est survenue, veuillez réessayer.");
 
-            private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+                // Afficher les détails de l'erreur dans la console
+                Console.WriteLine("Erreur lors de l'insertion des données d'ordonnance : " + ex.Message);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
             {
                 int selectedIndex = comboBox1.SelectedIndex;
                 if (selectedIndex >= 0 && selectedIndex < comboBox1.Items.Count)

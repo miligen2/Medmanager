@@ -141,5 +141,18 @@ namespace Medmanager
             ConsulterAntecedent consulterAntecedent = new ConsulterAntecedent(medecinId);
             consulterAntecedent.Show();
         }
+
+        private void medicamentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void creerUneIncompatibilitéToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            creerincompatibilite cri = new creerincompatibilite(medecinId);
+            cri.Show();
+            
+        }
     }
 }

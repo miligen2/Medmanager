@@ -49,6 +49,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.creerUneIncompatibilitéToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -74,10 +75,12 @@
             this.medicamentsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ajoutMédicamentsToolStripMenuItem,
             this.toolStripSeparator3,
-            this.consultationMédicamentToolStripMenuItem});
+            this.consultationMédicamentToolStripMenuItem,
+            this.creerUneIncompatibilitéToolStripMenuItem});
             this.medicamentsToolStripMenuItem.Name = "medicamentsToolStripMenuItem";
             this.medicamentsToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.medicamentsToolStripMenuItem.Text = "Medicaments";
+            this.medicamentsToolStripMenuItem.Click += new System.EventHandler(this.medicamentsToolStripMenuItem_Click);
             // 
             // ajoutMédicamentsToolStripMenuItem
             // 
@@ -226,6 +229,13 @@
             this.label2.Text = "Bonjour, Dr ";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // creerUneIncompatibilitéToolStripMenuItem
+            // 
+            this.creerUneIncompatibilitéToolStripMenuItem.Name = "creerUneIncompatibilitéToolStripMenuItem";
+            this.creerUneIncompatibilitéToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
+            this.creerUneIncompatibilitéToolStripMenuItem.Text = "Creer une incompatibilité";
+            this.creerUneIncompatibilitéToolStripMenuItem.Click += new System.EventHandler(this.creerUneIncompatibilitéToolStripMenuItem_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,6 +289,7 @@
         private System.Windows.Forms.ToolStripMenuItem ajouterUneAllérgieÀUnPatientToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem creerUneIncompatibilitéToolStripMenuItem;
     }
 }
 

@@ -765,6 +765,47 @@ namespace Medmanager
             }
 
         }
+        public void InsertIncompatibilite(int idAllergie, int idAntecedent, int idMedicament, int idMedicament2)
+        {
+            try
+            {
+                string query = "INSERT INTO `incompatibles`(`id_a`, `id_med`, `id_al`, `id_med_Medicament`) VALUES (@ant, @med, @all, @med2)";
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@ant", idAntecedent);
+                    command.Parameters.AddWithValue("@med", idMedicament);
+                    command.Parameters.AddWithValue("@all", idAllergie);
+                    command.Parameters.AddWithValue("@med2", idMedicament2);
+
+                    command.ExecuteNonQuery();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("Une erreur s'est produite lors de l'insertion de l'incompatibilité.", "Erreur d'insertion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public bool CheckExistingIncompatibility(int idAntecedent, int idMedicament, int idAllergie, int idMedicament2)
+        {
+            string query = "SELECT COUNT(*) FROM `incompatibles` WHERE `id_a` = @ant AND `id_med` = @med AND `id_al` = @all AND `id_med_Medicament` = @med2";
+
+            using (MySqlCommand command = new MySqlCommand(query, conn))
+            {
+                command.Parameters.AddWithValue("@ant", idAntecedent);
+                command.Parameters.AddWithValue("@med", idMedicament);
+                command.Parameters.AddWithValue("@all", idAllergie);
+                command.Parameters.AddWithValue("@med2", idMedicament2);
+
+                int count = Convert.ToInt32(command.ExecuteScalar());
+
+                // Retourne true si l'incompatibilité existe déjà, sinon false
+                return count > 0;
+            }
+        }
+
     }
 
 }

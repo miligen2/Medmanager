@@ -130,6 +130,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ajouter medicament\creerincompatibilite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajouter medicament\creerincompatibilite.Designer.cs">
+      <DependentUpon>creerincompatibilite.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ajouter Ordonnance\AOrdonnance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +222,9 @@
     <Compile Include="model\Patient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Ajouter medicament\creerincompatibilite.resx">
+      <DependentUpon>creerincompatibilite.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ajouter Ordonnance\AOrdonnance.resx">
       <DependentUpon>AOrdonnance.cs</DependentUpon>
     </EmbeddedResource>
