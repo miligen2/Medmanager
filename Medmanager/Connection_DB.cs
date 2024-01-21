@@ -1,4 +1,6 @@
 ﻿
+using Medmanager.Ajouter_medicament;
+using Medmanager.Ajouter_patient;
 using Medmanager.model;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
@@ -710,6 +712,57 @@ namespace Medmanager
                 }
             }
             return false;
+
+        }
+
+        public void getAntecedentFromIdPatient(int idPatient, DataGridView dataGridView)
+        {
+            try
+            {
+                string query = @"SELECT a.nom
+                FROM a_eu aeu
+                INNER JOIN antecedent a ON aeu.id = a.id_antecedent
+                WHERE aeu.id_patient = @idPatient";
+
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@idPatient", idPatient);
+
+                DataTable dataTable = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(dataTable);
+
+                dataGridView.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+        }
+        public void DeletAntecedent(string nomAntecedent, int idPatient)
+        {
+
+            try
+            {
+                // Utilisez une sous-requête pour obtenir l'ID de l'antécédent
+                string query = "DELETE FROM a_eu WHERE id_patient = @idPatient AND id IN (SELECT id_antecedent FROM antecedent WHERE nom = @nomAntecedent)";
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@nomAntecedent", nomAntecedent);
+                    command.Parameters.AddWithValue("@idPatient", idPatient);
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("L'antécédent a été supprimé avec succès.", "Suppression réussie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors de la suppression de l'antécédent : " + ex.Message);
+                MessageBox.Show("Une erreur s'est produite lors de la suppression de l'antécédent.", "Erreur de suppression", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }

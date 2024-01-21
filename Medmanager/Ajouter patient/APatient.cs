@@ -15,11 +15,12 @@ namespace Medmanager
     {
 
         private Connection_DB conn = new Connection_DB();
-        public APatient()
+        private int medecinId;  
+        public APatient(int medecinId)
         {
             InitializeComponent();
             conn.Open();
-
+            this.medecinId = medecinId;
         }
 
 
@@ -78,6 +79,11 @@ namespace Medmanager
                 Console.WriteLine("valeur ajouté avec succés");
         }
 
-
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu menu = new MainMenu(medecinId);
+            menu.Show(this);
+        }
     }
 }

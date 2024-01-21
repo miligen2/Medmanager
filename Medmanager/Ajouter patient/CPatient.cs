@@ -15,14 +15,16 @@ namespace Medmanager.Ajouter_patient
     public partial class CPatient : Form
     {
         private Connection_DB connection = new Connection_DB();
+        private int medecinId;
 
-        public CPatient()
+        public CPatient(int medecinId)
         {
 
             InitializeComponent();
             connection.Open();  
         
             LoadPatients();
+            this.medecinId = medecinId;
         }
         private void CPatient_Load(object sender, EventArgs e)
         {
@@ -48,7 +50,7 @@ namespace Medmanager.Ajouter_patient
                 FormModifier formModifier = new FormModifier();
 
                 // Initialisez le formulaire avec les données de la ligne sélectionnée
-                formModifier.InitializeForm(selectedRow);
+                formModifier.InitializeForm(selectedRow,medecinId);
 
                 // Affichez le formulaire de modification
                 formModifier.ShowDialog();
@@ -62,6 +64,13 @@ namespace Medmanager.Ajouter_patient
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu menu = new MainMenu(medecinId);
+            menu.Show(this);
         }
     }
 }

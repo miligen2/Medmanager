@@ -14,12 +14,14 @@ namespace Medmanager.Ajouter_patient
     public partial class AjoutAntePatient : Form
     {
         private Connection_DB conn = new Connection_DB();
-        public AjoutAntePatient()
+        private int medecinId;
+        public AjoutAntePatient(int medecinId)
         {
             InitializeComponent();
             conn.Open();
             LoadPatient();
             LoadAntecent();
+            this.medecinId = medecinId;
             
         }
         private int idPatient;
@@ -83,6 +85,13 @@ namespace Medmanager.Ajouter_patient
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu menu = new MainMenu(medecinId);
+            menu.Show(this);
         }
     }
 }

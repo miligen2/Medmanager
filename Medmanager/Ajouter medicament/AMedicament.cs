@@ -17,12 +17,14 @@ namespace Medmanager
     public partial class AMedicament : Form
     {
         private Connection_DB connection = new Connection_DB();
+        private int medecinId;
 
-        public AMedicament()
+        public AMedicament(int medecinId)
         {
             InitializeComponent();
             connection.Open(); 
             LoadAntecedent();
+            this.medecinId = medecinId;
         }
         private void LoadAntecedent()
         {
@@ -72,6 +74,18 @@ namespace Medmanager
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void AMedicament_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu menu = new MainMenu(medecinId);
+            menu.Show(this);
         }
     }
 }

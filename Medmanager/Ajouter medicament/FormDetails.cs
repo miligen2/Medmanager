@@ -16,14 +16,16 @@ namespace Medmanager
         private int medicamentID;
 
         private Connection_DB conn = new Connection_DB();
+        private int medecinId;
 
-        public void InitializeForm(DataGridViewRow selectedRow)
+        public void InitializeForm(DataGridViewRow selectedRow,int medecinId)
         {
             // Initialisez les contrôles avec les données de la ligne sélectionnée
             textBox1.Text = selectedRow.Cells["nom"].Value.ToString();
             comboBox1.Text = selectedRow.Cells["contre_indiction"].Value.ToString();
 
             medicamentID = Convert.ToInt32(selectedRow.Cells["id"].Value);
+            this.medecinId = medecinId;
         }
         public FormDetails()
         {
@@ -82,6 +84,18 @@ namespace Medmanager
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu menu = new MainMenu(medecinId);
+            menu.Show(this);
         }
     }
 }

@@ -250,30 +250,31 @@
 
             private void button1_Click(object sender, EventArgs e)
             {
-                // Get the selected medication from comboBox2
+                // Récupérer le médicament sélectionné depuis comboBox2
                 string selectedMedication = comboBox2.SelectedItem as string;
 
-                // Check if a medication is selected
+                // Vérifier si un médicament est sélectionné
                 if (!string.IsNullOrEmpty(selectedMedication))
                 {
-                     selectedMedicationId = connection.GetMedicamentIdByName(selectedMedication);
-                // Check if the patient has an allergy to the selected medication
+                // Obtenir l'ID du médicament sélectionné à partir de la base de données
+                selectedMedicationId = connection.GetMedicamentIdByName(selectedMedication);
+                // Vérifier si le patient est allergique au médicament sélectionné
                 bool hasAllergy = connection.getAllergieMedicament(selectedPatient.id, selectedMedicationId);
 
                 if (hasAllergy)
                 {
-                    // Display a message box asking if the doctor wants to proceed
+                    // Afficher une boîte de dialogue demandant si le médecin souhaite procéder
                     DialogResult result = MessageBox.Show("Le patient a une allergie à ce médicament. Voulez-vous quand même l'ajouter à l'ordonnance ?", "Allergie au médicament", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (result == DialogResult.Yes)
                     {
-                        // Add the selected medication to the DataGridView
+                        // Ajouter le médicament sélectionné à la DataGridView
                         dataGridView1.Rows.Add(selectedMedication);
                     }
                 }
                 else
                 {
-                    // Add the selected medication to the DataGridView
+                    // Ajouter le médicament sélectionné à la DataGridView
                     dataGridView1.Rows.Add(selectedMedication);
                 }
             }
@@ -288,5 +289,12 @@
             {
 
             }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu menu = new MainMenu(medecinId);
+            menu.Show(this);
         }
+    }
     }

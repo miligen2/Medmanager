@@ -44,7 +44,8 @@ namespace Medmanager
 
         private void consultationMédicamentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LMedicament lMedicament = new LMedicament();
+            this.Hide();
+            LMedicament lMedicament = new LMedicament(medecinId);
             lMedicament.Show();
         }
 
@@ -67,13 +68,15 @@ namespace Medmanager
 
         private void ajoutMédicamentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AMedicament aMedicament = new AMedicament();
+            this.Hide();
+            AMedicament aMedicament = new AMedicament(medecinId);
             aMedicament.Show();
         }
 
         private void ajouterPatientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            APatient aPatient = new APatient();
+            this.Hide();
+            APatient aPatient = new APatient(medecinId);
             aPatient.Show();
         }
 
@@ -89,7 +92,8 @@ namespace Medmanager
 
         private void consulterPatientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CPatient cPatient = new CPatient();
+            this.Hide();
+            CPatient cPatient = new CPatient(medecinId);
             cPatient.Show();
         }
 
@@ -99,32 +103,43 @@ namespace Medmanager
         }
 
  
-        private void medicamentParFamilleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            RechercheMedicament rechercheMedicament = new RechercheMedicament(); rechercheMedicament.Show();
-        }
 
         private void créerUneOrdonnanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Hide();
             AOrdonnance aOrdonnance = new AOrdonnance(medecinId);
             aOrdonnance.Show();
         }
 
         private void ajouterUnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AjoutAntePatient ajoutAntePatient = new AjoutAntePatient();
+            this.Hide();
+            AjoutAntePatient ajoutAntePatient = new AjoutAntePatient(medecinId);
             ajoutAntePatient.Show();
         }
 
         private void ajouterUneAllérgieÀUnPatientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AjoutAllergiesPatient ajoutAllergiesPatient = new AjoutAllergiesPatient();
+            this.Hide();
+            AjoutAllergiesPatient ajoutAllergiesPatient = new AjoutAllergiesPatient(medecinId);
             ajoutAllergiesPatient.Show();
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void consulterAntécédentàUnPatientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ConsulterAntecedent consulterAntecedent = new ConsulterAntecedent(medecinId);
+            consulterAntecedent.Show();
         }
     }
 }

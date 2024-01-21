@@ -11,20 +11,24 @@ using System.Windows.Forms;
 
 namespace Medmanager.Ajouter_patient
 {
+
     public partial class AjoutAllergiesPatient : Form
     {
         private Connection_DB conn = new Connection_DB();
 
+        private int medecinId;
+
         private int idPatient;
         private int idAllergies;
 
-        public AjoutAllergiesPatient()
+        public AjoutAllergiesPatient(int medecinId)
         {
             InitializeComponent();
             conn.Open();
 
             LoadPatient();
             LoadAllergie();
+            this.medecinId = medecinId;
         }
         private void LoadAllergie()
         {
@@ -80,6 +84,15 @@ namespace Medmanager.Ajouter_patient
 
         private void AjoutAllergiesPatient_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+            this.Hide();
+            MainMenu menu = new MainMenu(medecinId);
+            menu.Show(this);
 
         }
     }

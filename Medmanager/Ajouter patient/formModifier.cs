@@ -16,8 +16,9 @@ namespace Medmanager.Ajouter_patient
     {
         private int patientID;
         private Connection_DB connection = new Connection_DB();
+        private int medecinId;
 
-        public void InitializeForm(DataGridViewRow selectedRow)
+        public void InitializeForm(DataGridViewRow selectedRow,int medecinId)
         {
             // Set the values of the controls based on the selected patient
 
@@ -26,10 +27,11 @@ namespace Medmanager.Ajouter_patient
             textBoxPrenom.Text = selectedRow.Cells["prenom"].Value.ToString();
             textBoxSexe.Text = selectedRow.Cells["sexe"].Value.ToString();
             textBoxNumero.Text = selectedRow.Cells["numero"].Value.ToString();
-  
-        
+
+
 
             patientID = Convert.ToInt32(selectedRow.Cells["id_patient"].Value);
+            this.medecinId = medecinId;
         }
 
         public FormModifier()
@@ -104,6 +106,13 @@ namespace Medmanager.Ajouter_patient
         private void FormModifier_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu menu = new MainMenu(medecinId);
+            menu.Show(this);
         }
     }
 }

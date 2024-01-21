@@ -13,11 +13,13 @@ namespace Medmanager.Ajouter_medicament
     public partial class LMedicament : Form
     {
         private Connection_DB conn = new Connection_DB();
-        public LMedicament()
+        private int medecinId;
+        public LMedicament(int medecinId)
         {
             InitializeComponent();
             conn.Open();
             loadMedicament();
+            this.medecinId = medecinId;
         }
         private void loadMedicament()
         {
@@ -54,7 +56,7 @@ namespace Medmanager.Ajouter_medicament
                 FormDetails formModifier = new FormDetails();
 
                 // Initialisez le formulaire avec les données de la ligne sélectionnée
-                formModifier.InitializeForm(selectedRow);
+                formModifier.InitializeForm(selectedRow,medecinId);
 
                 // Affichez le formulaire de modification
                 formModifier.ShowDialog();
@@ -67,6 +69,13 @@ namespace Medmanager.Ajouter_medicament
         private void LMedicament_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu menu = new MainMenu(medecinId);
+            menu.Show(this);
         }
     }
 }
